@@ -1,0 +1,91 @@
+<!--
+Create a blog-style webpage using HTML tags matching the following criteria:
+1. The title of the page = “My Blog”
+2. In the body of the HTML, there should be 2 sections; header and main
+3. The Main part should contain 2 sections; “What we do” and “Articles”.
+a. Within “What we do”, provide a heading and a one-liner about the site
+b. Post 2 short articles in the “Articles” section; with the headings “Rich Internet
+Application” and “HTML 5”
+c. Each article should contain a timestamp in the header (hint: use the <time> tag
+d. Each article should also contain a link to the relevant wiki page
+e. Use the <aside> tag to explain the purpose of a side-section in HTML5, with a link to
+the HTML5 logo (include a caption)
+4. Include your name in the footer of the page
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="description" content="Rich Web Blog">
+	<meta name="author" content="Max">
+	<meta name="keywords" content="HTML, CSS3, Javascript, Jquery">
+	<title>My Rich Web Blog</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ol>
+				<li> Home </li>
+				<li><a href="#whatwedo_section"> What we do </a></li>
+				<li><a href="#articles_section"> Articles </a></li>
+			</ol>
+		</nav>
+	</header>
+	<main>
+		<section id="whatwedo_section">
+			<h1> What we Do </h1>
+			<article>
+				<h3> Welcome to the blog </h3>
+				<p>We provide weekely information about rich web technologies and HTML5 </p>
+			</article>
+		</section>
+		<section id="articles_section">
+			<h1>Articles</h1>
+			<article>
+				<header>
+					<h3> Rich Interenet Application </h3>
+					<p>
+						<i> Posted on <time datetime="2008-09-24 17:35"> 24th os September, 2015 by Max </i>
+					</p>
+				</header>	
+				<p> A rich Internet application (RIA) (sometimes called an Installable Internet Application) is a Web application that has many of the characteristics of desktop application software, typically delivered by way of a site-specific browser, a browser plug-in, an independent sandbox, extensive use of JavaScript, or a virtual machine.[1] Adobe Flash, JavaFX, and Microsoft Silverlight are currently the three most common platforms, with desktop browser penetration rates around 96%, 76%, and 66%, respectively (as of August 2011)
+				<br/>
+				For more information click <a href="https://www.wikiwand.com/en/Rich_Internet_application">here</a>.
+				</p>
+			</article>
+			<article>
+				<header>
+					<h3> HTML5 </h3>
+					<p>
+						<i> Posted on <time datetime="2008-09-24 17:40"> 24th os September, 2015 by Max </i>
+					</p>
+				</header>	
+				<p> HTML5 is a markup language used for structuring and presenting content on the World Wide Web. It was finalized, and published, on 28 October 2014 by the World Wide Web Consortium (W3C). This is the fifth revision of the HTML standard since the inception of the World Wide Web.
+				<br/>Its core aims are to improve the language with support for the latest multimedia while keeping it easily readable by humans and consistently understood by computers and devices (web browsers, parsers, etc.). HTML5 is intended to subsume not only HTML 4, but also XHTML 1 and DOM Level 2 HTML.[4]
+				<br/>
+				Following its immediate predecessors HTML 4.01 and XHTML 1.1, HTML5 is a response to the fact that the HTML and XHTML in common use on the World Wide Web have a mixture of features introduced by various specifications, along with those introduced by software products such as web browsers and those established by common practice.[5] It is also an attempt to define a single markup language that can be written in either HTML or XHTML. It includes detailed processing models to encourage more interoperable implementations; it extends, improves and rationalizes the markup available for documents, and introduces markup and application programming interfaces (APIs) for complex web applications.[6] For the same reasons, HTML5 is also a potential candidate for cross-platform mobile applications. Many features of HTML5 have been built with the consideration of being able to run on low-powered devices such as smartphones and tablets. In December 2011, research firm Strategy Analytics forecast sales of HTML5 compatible phones would top 1 billion in 2013.[7
+				<br/>
+				For more information click <a href="https://www.wikiwand.com/en/HTML5" target="_blank">here</a>.
+				</p>
+
+				<aside>
+					<h5> Side Section </h5>
+					<p> In this section we put information related to the gven article.
+					This aside content should be related to the surrounding content and should not be
+					used for ads of search boxes.
+					</p>
+					<figure>
+						<img src="HTML5_Logo_512.png" width="100" height="100" alt="HTML5 Logo">
+						<figcaption> Figure 1: HTML5 logo</figcaption>
+					</figure>
+				</aside>
+
+			</article>
+		</section>
+	</main>
+	<footer>
+		<p> Maximilian Mihoc 2015 </p>
+	</footer>
+</body>
+</html>
