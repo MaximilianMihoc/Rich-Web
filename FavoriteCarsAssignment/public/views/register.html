@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-12">
+	    <form role="form" name="registerForm" id="registerForm" ng-submit="register()"novalidate>
+	        <div class="col-lg-12">
+	            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+
+				<div class="form-group">
+	                <label for="InputEmail">Enter Username</label>
+	                <div class="input-group">
+	                    <input type="text" class="form-control" id="Inputusername" name="Inputusername" ng-model="user.Inputusername" placeholder="Enter Username" ng-required="true">
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.Inputusername.$invalid && registerForm.Inputusername.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputEmail">Enter Email</label>
+	                <div class="input-group">
+	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" ng-model="user.inputEmail" placeholder="Enter Email" ng-required="true">
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputEmail.$invalid && registerForm.InputEmail.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputEmail">Confirm Email</label>
+	                <div class="input-group">
+	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputConfirmEmail" placeholder="Confirm Email" ng-model="user.inputEmailSecond" ng-required="true">
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputConfirmEmail.$invalid && registerForm.InputConfirmEmail.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputMessage">Enter Password</label>
+	                <div class="input-group">
+	                    <input type="password" class="form-control" id="InputPasswordFirst" name="InputPassword" placeholder="Enter Password" ng-model="user.inputPassword" ng-required="true">
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputPassword.$invalid && registerForm.InputPassword.$touched">Password is required</p>
+
+	            <div class="form-group">
+	                <label for="InputMessage">Confirm Password</label>
+	                <div class="input-group">
+	                    <input type="password" class="form-control" id="InputPasswordSecond" name="InputPasswordSecond" placeholder="Confirm Password" ng-model="user.InputPasswordSecond" ng-required="true">
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+				<p class="error validationerror" ng-show="registerForm.InputPasswordSecond.$invalid && registerForm.InputPasswordSecond.$touched">Confirm Password is required</p>
+
+	            <button type="submit" name="submit" id="submit" class="btn btn-info pull-right" ng-disabled="registerForm.$invalid">Submit</button>
+
+	        </div>
+	    </form>
+
+	</div>
+
+
+</div>
+    

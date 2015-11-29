@@ -1,0 +1,9 @@
+{
+  "firebase": "favoritecars",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

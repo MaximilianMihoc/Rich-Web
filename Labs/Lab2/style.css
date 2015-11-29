@@ -1,0 +1,55 @@
+body{
+	width: 100%;
+
+}
+
+#topNav{
+	position: relative;
+	float: right;
+	top: 10px;
+	width: 85%;
+}
+
+#ArtAndEditArea{
+
+}
+
+#idArtTalk{
+	float: left;
+	left: 50px;
+}
+
+#readEdit1{
+	position: relative;
+	left: -200px;
+}	
+
+#readEdit2{
+	position: relative;
+	top: -19px;
+}
+
+
+#leftNav{
+	position: absolute;
+	float: left;
+	top: 10px;
+	width: 15%;
+	
+}
+
+#content{
+	position: relative;
+	float: right;
+	width: 80%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #0d75d1;
+	padding: 3%;
+}
+
+#footer{
+	position: relative;
+	float: right;
+	width: 85%;
+}
