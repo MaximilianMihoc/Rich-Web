@@ -4,12 +4,9 @@
 <div ng-controller="RegistrationController">
 	<div ng-show="currentUser">
 		<h2>Welcome {{ currentUser.username }}</h2>
-	</div>
-	<div ng-show="auth" >
 
-		<img src="{{ auth.password.profileImageURL }}">
-		<img src="{{ auth.github.profileImageURL }}">
-		<img src="{{ auth.google.profileImageURL }}">
+		<img src="{{ currentUser.profilePictureURL }}">
+		
 
 		<a ng-href="#/login" ng-click="logout()">Log Out</a>
 	</div>

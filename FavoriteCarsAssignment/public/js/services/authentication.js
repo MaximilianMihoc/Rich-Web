@@ -23,7 +23,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	return {
 		login: function(user) {
 	      auth.$authWithPassword({
-	        email    : user.inputEmail,
+	        email    : (user.inputEmail).trim(),
 	        password : user.inputPassword
 	      }).then(function(authData) {
 	          console.log("Authenticated successfully with payload:", authData);
@@ -37,16 +37,20 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	    register: function(user) {
 	    	var self = this;
 	      auth.$createUser({
-	        email    : user.inputEmail,
+	        email    : (user.inputEmail).trim(),
 	        password : user.inputPassword
 	      }).then(function(userData) {
-	          console.log("Successfully created user account with uid:", userData.uid);
+	          console.log("Successfully created user account with uid:", userData);
 	          
+	          // calculate ravatar hash and get the gravatar image URL
+	          var emailHash = get_gravatar((user.inputEmail).trim(), 200);
+
 	          var regRef = new Firebase(FIREBASE_URL + "users")
 	          .child(userData.uid).set({
 	            date: Firebase.ServerValue.TIMESTAMP,
 	            regUser: userData.uid,
-	            username: user.Inputusername
+	            username: user.Inputusername,
+	            profilePictureURL: emailHash
 
 	          }); //set
 
@@ -81,7 +85,8 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 		          .child(authData.uid).set({
 		            date: Firebase.ServerValue.TIMESTAMP,
 		            regUser: authData.uid,
-		            username: authData.github.username
+		            username: authData.github.username,
+		            profilePictureURL: authData.github.profileImageURL
 
 		          }); //set
 
@@ -106,7 +111,8 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 		          .child(authData.uid).set({
 		            date: Firebase.ServerValue.TIMESTAMP,
 		            regUser: authData.uid,
-		            username: authData.google.displayName
+		            username: authData.google.displayName,
+		            profilePictureURL: authData.google.profileImageURL
 
 		          }); //set
 
