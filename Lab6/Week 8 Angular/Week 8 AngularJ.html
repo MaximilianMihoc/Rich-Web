@@ -1,0 +1,74 @@
+ <!DOCTYPE html>
+<html ng-app="app">
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+  <meta charset="UTF-8">
+  <title>My Calculator</title>
+
+</head>
+<body>
+<form>
+    <div>
+      <h2>My Calculator</h2>
+ 
+      <br> x:
+      <input type="number" ng-model="x">
+      <br>y:
+      <input type="number" ng-model="y">
+      <br> Total:
+      <output ng-model: "z">{{z}}</output>
+    </div>
+    <div>
+      <button type="reset">Clear</button>
+      <button ng-click="z = x + y"> + </button>
+      <button ng-click="z = x - y"> - </button>
+      <button ng-click="z = x * y"> * </button>
+      <button ng-click="z = x / y"> / </button>
+      <button ng-click="z = x % y"> % </button>
+    </div>
+  </form>
+<br><br>
+<div>
+    <div ng-controller="CalculatorController">
+        Enter a number:
+        <input type="number" ng-model="number" />
+        <button ng-click="doSquare()">X<sup>2</sup></button>
+        <button ng-click="doCube()">X<sup>3</sup></button>
+         
+        <div>Answer: {{answer}}</div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+var app = angular.module('app', []);
+ 
+app.service('MathService', function() {
+    this.add = function(a, b) { return a + b };
+     
+    this.subtract = function(a, b) { return a - b };
+     
+    this.multiply = function(a, b) { return a * b };
+     
+    this.divide = function(a, b) { return a / b };
+});
+ 
+app.service('CalculatorService', function(MathService){
+     
+    this.square = function(a) { return MathService.multiply(a,a); };
+    this.cube = function(a) { return MathService.multiply(a, MathService.multiply(a,a)); };
+ 
+});
+ 
+app.controller('CalculatorController', function($scope, CalculatorService) {
+ 
+    $scope.doSquare = function() {
+        $scope.answer = CalculatorService.square($scope.number);
+    }
+ 
+    $scope.doCube = function() {
+        $scope.answer = CalculatorService.cube($scope.number);
+    }
+});
+</script>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>IMDb API Webapp - Treehouse Demo</title>
+  <meta name="author" content="Jake Rocheleau">
+  <link rel="shortcut icon" href="http://d15dxvojnvxp1x.cloudfront.net/assets/favicon.ico">
+  <link rel="icon" href="http://d15dxvojnvxp1x.cloudfront.net/assets/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="styles.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="w">
+    <h1>IMDb Mini-Webapp</h1>
+    <!-- logo icon http://arrioch.deviantart.com/art/Blawb-PSD-245341011 -->
+    
+    <p class="desc">Select a TV show to display some related information.</p>
+    
+    <nav id="tvnav">
+      <ul class="clearfix">
+        <li><a href="#" id="tt0367279">Arrested Development</a></li>
+        <li><a href="#" id="tt0386676">The Office</a></li>
+        <li><a href="#" id="tt0121955">South Park</a></li>
+        <li><a href="#" id="tt0098904">Seinfeld</a></li>
+        <li><a href="#" id="tt1826940">New Girl</a></li>
+      </ul>
+    </nav>
+    
+    <div id="imdbcontents" class="clearfix"></div>
+  </div>
+
+<script type="text/javascript">
+$(function(){
+  
+  $('#tvnav ul li a').on('click', function(e){
+    e.preventDefault();
+    var imdbid  = $(this).attr('id');
+    var resturl = "http://mymovieapi.com/?type=json&id="+imdbid+"&release=full&plot=full";
+    
+    $('#imdbcontents').html('<center><img src="images/loading.gif" alt="loading..."></center>');
+    
+    $.ajax({
+      url: resturl,
+      dataType: 'json',
+      success: function(data){
+        var title  = data.title;
+        var genre  = data.genres[0];
+        var poster = data.poster.imdb;
+        var url    = data.imdb_url;
+        var plot   = data.plot;
+        var rlseyr = data.year;
+        
+        var cdiv = $('#imdbcontents');
+        
+        var thehtml = "<img src=\""+poster+"\" class=\"floatright\">";
+        thehtml = thehtml + "<h2>"+title+"</h2>";
+        thehtml = thehtml + "<p class=\"genre\">"+genre+" - first aired in "+rlseyr+"</p>";
+        thehtml = thehtml + "<p>"+plot+"</p>";
+        thehtml = thehtml + "<p><a href=\""+url+"\" target=\"_blank\">View on IMDb &rarr;</p>";
+        
+        cdiv.html(thehtml);
+      }
+    });
+  });
+
+});
+</script>  
+</body>
+</html>

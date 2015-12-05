@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- saved from url=(0127)https://dit-bb.blackboard.com/bbcswebdav/pid-488358-dt-content-rid-1770654_1/courses/CMPU4043-B/Week%208%20AngularRest%20A.html -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}</style>
+	<!-- CSS ===================== -->
+	<!-- load bootstrap -->
+	<link rel="stylesheet" href="./Week%208%20AngularRest%20A_files/bootstrap.min.css"> 
+	<!-- JS ===================== -->
+	<!-- load angular -->
+	<script type="text/javascript" src="./Week%208%20AngularRest%20A_files/angular.min.js"></script><style type="text/css"></style>
+	<script type="text/javascript" src="./Week%208%20AngularRest%20A_files/angular-route.min.js"></script>
+
+	<title></title>
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+<!-- apply angular app and controller to our body -->
+<body data-ng-app="myapp" class="ng-scope">
+	<div data-ng-controller="MyController" class="ng-scope ng-binding">
+		<!-- Button and link click event method (doClick)-->
+		<button data-ng-click="myData.doClick()">Get Dublin Weather</button><br>
+		<!-- expression regarding where we will place our data returned from server -->
+		Data from server: 
+	</div>
+	<script type="text/javascript">
+		// Define our module and controller 
+		var myapp = angular.module("myapp", []);
+		myapp.controller("MyController", function($scope, $http) {
+			//Define the JS object myData and the doClick function. 
+			$scope.myData = {};
+			$scope.myData.doClick = function() {
+			// Set up our promise object, that wil be populated with the response from the server
+			// the http.get method returns a "promise" object
+			// access our data using the RESTful call i.e., containing the data we want to access in the URI; location = dublin, units = metric (for celscius) and the api key
+			var responsePromise = $http.get("http://api.openweathermap.org/data/2.5/weather?q=Dublin,ie&units=metric&appid=186b6b09d4cb80e8b89856445ec66a12");
+			//Both Success and Error callback functions take the following parameters:
+			//Data: is the JSON object returned by the server. The $http service assumes that your server sends back JSON.
+			//status : parameter is the HTTP status code returned by the server along with the response.
+			//headers: used to obtain any HTTP response headers. returns a JavaScript object with one key, value pair for each header, 
+			//config: configuration object that was used to create the given HTTP request  Its passed as parameter to the $http 
+
+			responsePromise.success(function(data, status, headers, config) {
+				$scope.myData.fromServer = " Weather in " + data.name + // see response in lecture notes
+				" is " + data.main.temp + " c";
+				});
+			responsePromise.error(function(data, status, headers, config) {
+				alert("AJAX failed!");
+			});
+			}
+		} );
+	</script>
+
+</body></html>

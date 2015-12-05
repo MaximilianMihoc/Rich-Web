@@ -1,0 +1,9 @@
+<p ng-show="contacts.length == 0">There are No Contacts to Display!</p>
+<ul>
+<!-- This will iterate through each item in contacts, which is attached to the scope via the controller -->
+  <li ng-repeat="(id, contact) in contacts">
+    <a href="#/info/{{id}}">{{contact.name}}</a>
+    [<a href="#/remove/{{id}}">Remove</a>]
+  </li>
+</ul>
+<a href="#/add">Add a New Contact</a>

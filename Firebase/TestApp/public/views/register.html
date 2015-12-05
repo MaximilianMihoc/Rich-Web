@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-sm-12">
+	    <form role="form" name="registerForm" id="registerForm" novalidate>
+	        <div class="col-lg-6">
+	            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+
+				<div class="form-group">
+	                <label for="InputEmail">Enter Username</label>
+	                <div class="input-group">
+	                    <input type="text" class="form-control" id="Inputusername" name="Inputusername" ng-model="Inputusername" placeholder="Enter Username" required>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.Inputusername.$invalid && registerForm.Inputusername.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputEmail">Enter Email</label>
+	                <div class="input-group">
+	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" ng-model="inputEmailFirst" placeholder="Enter Email" required>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputEmail.$invalid && registerForm.InputEmail.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputEmail">Confirm Email</label>
+	                <div class="input-group">
+	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputConfirmEmail" placeholder="Confirm Email" ng-model="inputEmailSecond" required>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputConfirmEmail.$invalid && registerForm.InputConfirmEmail.$touched">Must be a valid email</p>
+
+	            <div class="form-group">
+	                <label for="InputMessage">Enter Password</label>
+	                <div class="input-group">
+	                    <input type="password" class="form-control" id="InputPasswordFirst" name="InputPassword" placeholder="Enter Password" ng-model="InputPasswordFirst" required>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+	            <p class="error validationerror" ng-show="registerForm.InputPassword.$invalid && registerForm.InputPassword.$touched">Password is required</p>
+
+	            <div class="form-group">
+	                <label for="InputMessage">Confirm Password</label>
+	                <div class="input-group">
+	                    <input type="password" class="form-control" id="InputPasswordSecond" name="InputPasswordSecond" placeholder="Confirm Password" ng-model="InputPasswordSecond" required>
+	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+	                </div>
+	            </div>
+				<p class="error validationerror" ng-show="registerForm.InputPasswordSecond.$invalid && registerForm.InputPasswordSecond.$touched">Confirm Password is required</p>
+
+	            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+
+	        </div>
+	    </form>
+
+	    <div class="col-lg-5 col-md-push-1">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! Message sent.</strong>
+                </div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>
+                </div>
+            </div>
+        </div>
+
+	</div>
+
+
+</div>
+    

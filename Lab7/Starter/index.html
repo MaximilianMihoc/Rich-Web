@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="MovieController">
+  <head>
+    <title ng-bind="'Movie Browser - ' + details.Title"></title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <div class="container-fluid outerdiv">
+     
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#"><span class="span-style">Movie Browser</span></a>
+          </div>
+         
+        </div>
+      </nav>
+      <noscript>
+        <div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
+      </noscript>
+
+     
+        <div class="input-group search-bar">
+          <input type="text" ng-model="search" ng-change="change()" class="form-control" placeholder="Enter full movie name" autofocus />
+          <span class="input-group-addon bar-style"><i class="glyphicon glyphicon-search"></i></span>
+        </div>
+
+        <div id="main-info" ng-include="'partials/main-info.html'" class="col-md-8"></div>
+
+        <div id="related-results" ng-include="'partials/related-results.html'" class="col-md-4 animated bounce related-results"></div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

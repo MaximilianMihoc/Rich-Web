@@ -1,0 +1,14 @@
+<!--Now we can create our views and save as home.html and viewStudents.html. !-->
+<!-- In this view, you can see a list of students with a search option. We have already discussed these concepts in the previous posts. !-->
+<div class="container">
+    <h2> View Students </h2>
+    Search:
+    <br/>
+        <input type="text" ng-model="name" />
+    <br/>
+    <ul>
+        <li ng-repeat="student in students | filter:name">{{student.name}} , {{student.city}}</li>
+    </ul>
+ 
+    <a href="#/home"> Back</a>
+</div>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>C12728559 Maximilian Mihoc</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Maximilian Mihoc Portfolio">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="portfolio.js"></script>
+</head>
+<!-- After the page loads, some content is hidden. It can be later shown pressing specific buttons
+This functionality was implemented ir order to make the page more dynamic and include everything in one page. The content can be later loaded using other third-party libraries, for now everything is done using JavaScript.
+
+Bootstrap was used in this portfolio for layout and navigation bar.
+ -->
+<body onLoad="hideContent()">
+<!-- Header of the page. Includes my name, navigation bar and a clock + date -->
+<header> 
+  <div class="jumbotron" id="top">
+    <!-- The following div is used for date and time. In the JS file, the id of this div is used to update date and time for the page. -->
+    <div id="todayDt"></div>
+    <h1>Maximilian Mihoc Portfolio</h1> 
+    <div class="container">    
+      <ul id="nav" class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#experienceArea">Experience</a></li>
+          <li><a href="#educationArea">Education</a></li>
+          <li><a href="#skillsArea">Skills</a></li>
+          <li><a href="#interestsArea">Interests</a></li>
+          <li><a href="#awardsArea">Awards</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<!-- The main section contains all the informations required for this portfolio -->
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <section id="personalStatement">
+              <h2>Summary</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximilian is currently studying in his fourth year, of a four year BSc. Honours course in Computer Science. During his time in Dublin Institute of Technology, Maximilian has become well-versed in several programming languages, most notably C, C#, Java, MySQL, HTML/HTML5, CSS and PHP. He has good problem solving skills and a good understanding of mathematics and logic.
+                <br /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximilian participated in team and individual projects, in college and in previous activities, and he is responsible, able to inspire trust, able to motivate others and a good listener. Some of the college projects includes Databases, Communications, Object Oriented Programming, Web Development and Software Engineering. His teamwork, communication and self-motivation skills vastly improved as a result.
+                <br /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximilian had the honour of receiving an Award Certificate for Outstanding Team Innovation in college. He also has several awards in Mathematics gained in a variety of competitions he took part during secondary school. The awards includes three gold and two silver medals in "Evaluation in Education" competition. 
+                <br /><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determined and ambitious, Maximilian gives full attention to anything he does: academic, work or social oriented. He easily integrates within a team environment and quick to offer solutions, support and suggestions to aid in the completion of a common goal. He is currently self-learning Unity and Python in his spare time.
+                <br /> 
+                <b>Contact</b><br />
+                E-mail: maximilian.mihoc@mydit.ie<br />
+                Phone: +353 876097430
+              </p>            
+        </section>
+      </div>
+    </div>
+    <br />
+    <h1 id="experienceArea">Experience</h1>
+    <hr>
+    <!-- Bootstrap used here to divide the screen in 3 sections using the col-sm-4 class -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="box">
+               <h2>Software Developer</h2>   
+               <img class="boxImage" src="images/Ocuco.jpg" alt="OcucoLogo">
+               <p>
+                <b>Ocuco Limited </b><br /> 
+                January 2015 - Present | Dublin <br /><br />
+                 Working as part of the development team in Ocuco, Maximilian managed to achieve of different tasks and gained experience in several technologies including Delphi ans Sales Force. 
+               </p>
+               <!-- The next button is used to show more information on the page regarding the Ocuco experience -->
+               <button id="moreOcucoInfo" class="btn" onClick="toggleElement(this)">More</button>
+               <!-- The next 3 divs are used in CSS to create a nice design for the box -->
+               <div class="fold_box"></div>
+               <div class="fold2_box"></div>
+               <div class="box_ribbon"></div>    
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="box">
+               <h2>Web Programmer</h2>   
+               <img class="boxImage" src="images/DIT_logo.jpg" alt="DITLogo">
+               <br />
+              <p>
+                <b>Dublin Institute of Technology</b><br /> 
+                July 2014 - October 2014 | Dublin <br /><br />
+                 Working as part of the Applied Intelligence Research Center to develop novel web-based interfaces for data analytic tools that are targeted at the marketing industry.
+               </p>
+               <!-- The next button is used to show more information on the page regarding the DIT experience as Web Programmer -->
+               <button id="moreDITbutton" class="btn" onClick="toggleElement(this)">More</button>
+               <div class="fold_box"></div>
+               <div class="fold2_box"></div>
+               <div class="box_ribbon"></div>    
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="box">
+               <h2>Landscaper</h2>   
+               <img class="boxImage" src="images/landscaper.jpg" alt="LandscaperImage">
+               <p>
+                <b>SDL Gardens</b><br /> 
+                June 2014 - July 2014 | Dublin <br /><br />
+                 Working as a landscaper included activities such as performing ground skeeping, building maintenance duties, mowing lawn, installing rock gardens, ponds, decks and other duties.
+               </p>
+               <br />
+               <div class="fold_box"></div>
+               <div class="fold2_box"></div>
+               <div class="box_ribbon"></div>    
+        </div>
+      </div>
+    </div>
+    <!-- The div with id "ocucoExtent" is hidden and it can be seen when the user clicks the "More" button in the Ocuco experience section 
+    This div can be hidden and shown as the user requires. -->
+    <div id="ocucoExtend" class="row details">
+      <div class="col-sm-8">
+        <section>
+          <h2>Ocuco</h2>
+          <hr>
+          <article>
+            <h3>Quality Assurance - Acuitas and Focus</h3>
+          During his time in Ocuco, Maximilian did a lot of testing. First tests were for a smaller program used in the company and after he gained more experience, more important tests were comming. At a later stage, he started to do regressin testing for the main products.
+          <br /><br />
+          Regression testing is a type of software testing that seeks to uncover new software bugs, in existing functional or non-functional areas of a system after changes such as enhancements, patches or configuration, have been made. The intent of regression testing is to ensure that changes to the application have not introduced new faults. 
+          <br /><br />
+          Maximilian did regression testing for Acuitas and Focus in both windows 8.1 and windows 10. The bugs found had to be included into a document with clear explanation and sent to the Quality Assurance Team leader. After testing the products separately in different versions of Windoes, a comparison of performance between Windows 7 and Windows 10 has been done.
+        </article>
+      <hr>
+          <article>
+            <h3>Support Dashboard</h3>
+          Changing the Support Dashboard was another task that Maximilian performed during his time in Ocuco. The Support Dashboard is a web application that is used to track general information about the daily activity of the Support team. This application contains details such as the number of agents that are available to take calls, the numbers of calls that have been made, the number of calls in queue and so on. The support dashboard has not been changed from a long time and the manager needed more information to be displayed to help ease the management work and obtain better team performance. 
+          <br /><br />
+          Working on the Support Dashboard, Maximilian learned about ASP and Visual Basic but more importantly, he improved his database skills. The dashboard had to retrieve data from a Cisco database. In order to retrieve data from the database he had to understand it and then write complicated queries. 
+        </article>
+      <hr>
+          <article>
+            <h3>Delphi Coding</h3>
+          The main products of the Company are built in Delphi with Object Orinted Pascal. Maximilian spend time in learning the basics of Pascal and how it is working. After getting familiar with the syntax, he got more responsibility and he had to fix bugs reposted by people. He managed to fix the bugs assigned to him with success.
+          <br /><br />
+          During the time spent coding in Delphi, Maximilian improved his coding skills, problem solving skills and also the research skills. The technologies learned also included Subversion and Delphi.
+        </article>
+      <hr>
+          <article>
+            <h3>SalesForce Experience</h3>
+          A technical person to implement new features and processes in Salesforce was needed and Maximilian was picked to take ownership for thats work. Salesforce is a cloud application platform used in Ocuco to help the Sales Team improve their performance of sales and for them to have a quick access to data in the cloud. With a customisable interface, users can do pretty much what they want there and define their own ways of using the platform. 
+          <br /><br />
+          The new skills learned during that task were sales and technical skills. He has a better understanding about sales and how they work. His technical skills were upgraded as he learned to use the Sales Force platform along with the programming languages used there, Visual Force, Apex, SOQL and JavaScript. The skills gained on that task are very important in his role in Ocuco and also for his career.
+        </article>
+      </section>
+      </div>
+      <div class="col-sm-4">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/OpticalSplash.jpg" alt="AcuitasImg">
+          <br /><br /><br /><br /><br />
+          <img class="inDetailsImage" src="images/Picture1.png" alt="Picture1.png">
+          <br /><br /><br /><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<img class="inDetailsImage" src="images/Embarcadero_Delphi_Logo.png" alt="DElphiLogo">
+          <br /><br />
+          <img class="inDetailsImage" src="images/salesforce.png" alt="SalesForceLogo">
+      </div>
+    </div>
+
+    <!-- The following section is displayed when the user clicks the button from DIT experience. When hidden, the space occupied by this div will be overwritten by the next data contained in the page. This make the page to be more dynamic. -->
+    <div id="ditExtend" class="row details">
+      <div class="col-sm-8">
+        <section>
+          <h2>DIT</h2>
+          <hr>
+          <article>
+          <h3>CREAN</h3>
+          Maximilian was working at this project as part of a three months internship at Dublin Institute of Technology.
+          <br /><br />
+          Before Maximilian started to work on the project, he had to familiarize himself with the technologies used. In order to do that, he and his team had to create a simple JSP page that is using jQuery and AJAX to request data from a Struts2 action. The Struts2 action requests the data from a Solr database and returns it in JSON format to the JSP page. The JSP page had to display that data as a Google charts chart.
+          <br /><br />
+          After familiarizing with technologies this project uses, the team had to familiarize with the project's code and functionality, so they had to write unit tests for the existing code using JUnit and also integration tests.
+          <br /><br />
+          Maximilian was working with his team for the implementation of design specifications and full stack development including frontend, user interface design using bootstrap, backend using Java with Struts2 framework and Solr database creation.
+        </article>
+      </section>
+      </div>
+      <div class="col-sm-4">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/team_meeting.png" alt="TeamMeetingPhoto">
+      </div>
+    </div>
+    <!-- Here is where the next are from the page starts.  -->
+    <h1 id="educationArea">Education</h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="box">
+           <h2>Dublin Institute of Technology</h2>   
+           <img src="images/download.jpg" alt="DITPhoto">
+           <p>
+            <br />
+            BSc (Hons), Computer Science, Ongoing<br />
+            2012 – 2016 <br />
+           </p>
+           <button id="moreditExp" class="btn" onClick="toggleElement(this)">More</button>
+           <div class="fold_box"></div>
+           <div class="fold2_box"></div>
+           <div class="box_ribbon"></div>    
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box">
+           <h2>"Vasile Sav" Roman</h2>   
+           <img src="images/sav-sigla.jpg" alt="Vasile Sav">
+           <br />
+           <p><br />
+            Baccalaureate Diploma (Equivalent of Leaving Certificate), Mathematics and Computer Science, 9.20/10 (equivalent of 552 Leaving Certificate points)<br /><br />
+             2009 - 2012
+           </p>
+           
+           <div class="fold_box"></div>
+           <div class="fold2_box"></div>
+           <div class="box_ribbon"></div>    
+        </div>
+      </div>
+    </div>
+
+    <!-- This is the area that contains more details about the Education in DIT. User can hide and show this as he/she desires. -->
+    <div id="ditEducationExtend" class="row details">
+      <div class="col-sm-8">
+        <section>
+          <h2>Projects</h2>
+          <article>
+            <header>
+              <h3> Object Oriented Programming: Unity 2D game </h3>
+            </header> 
+            <p>This project is an adventure game Maximilian was developing on Unity 2D as an individual project. It is about a ninja that has to kill enemies and collect coins in order to increase the score and pass levels. It has a total of three levels with different types of enemies that have to be killed using a variety of weapons given when the user collects a certain amount of coins. 
+            <br /><br />
+            At start, the player gets three lives with a percentage of 100 and a sword that has to be used to kill the enemies. As soon as the player collects a certain number of coins, he will be able to throw shurikanes and arrows to the enemies for a quicker death.
+            <br /><br />
+            This project includes a blog, a proposal document and use of C# language. 
+            More details about this can be found at http://maximilianmihoc.weebly.com/ and code is available on GitHub.
+            <br /><br />
+            It is built for Windows and Android environments and it is available to download from the blog <a target="_blank" href="http://maximilianmihoc.weebly.com/">here</a>.
+            </p>
+          </article>
+          <hr>
+          <article>
+            <header>
+              <h3> Human Computer Interactions - Quantum Super Car Rental </h3>
+            </header> 
+            <p>Developed to demonstrate fundamentals of interactions between humans and computers.The project is using metaphors, Nielsen's heuristics and mental models, applied during implementation.
+            Low,medium and high fidelity prototypes were also used. 
+
+            Coding part consisted of scripts written in PHP, SQL, HTML and CSS languages.
+            </p>
+          </article>
+          <hr>
+          <article>
+            <header>
+              <h3> Object Oriented Programming - DANI </h3>
+            </header> 
+            <p>The aim of this project was to implement DANI (Dynamic Artificial Non-Intelligence). DANI is what is known nowadays as a conversational agent, and it was inspired by the talking computers of science-fiction such a HAL, the Computer from Star Trek and Eddie from the Hitchhikers Guide to the Galaxy.
+            <br />
+            DANI starts out with no knowledge of the English language but its knowledge is improved when the user interacts with it..
+            <br />
+            Maximilian did the implementation of DANI in C# and he received a final mark of 90%. 
+            </p>
+          </article>
+          <hr>
+          <article>
+            <header>
+              <h3> Pet Shop database - Team Project </h3>
+            </header> 
+            <p>The aim of this project was to create the database of a Pet Shop. 
+              Maximilian’s team had to agree the requirements of the project and divide work allocation. His duties were to use ErWin for designing the ERD model, generate the SQL code to create the database with appropriate constrains and also to populate the database.
+              Maximilian collaborated with other team members on progress of project and difficulties encountered, carrying out analysis, testing, coding and implementation of the database.
+              Maximilian’s team presented the completed database and received a final overall mark of 93%. 
+            </p>
+          </article>
+          <hr>
+          <article>
+            <header>
+              <h3> Outstanding Team Innovation, International Bake Sale for "Wells for Zoe" - Team Project</h3>
+            </header> 
+            <p>For "Communications and Professional Development" module in first year, students had to make up teams and organize a fundraising event. The class was divided into teams and each team had to come up with something they thought they could make money out of.
+            Maximilian's team decided to make an International Bake Sale since the team had members from six different countries. 
+            During this project, Maximilian improved his communications skills, project management skills, team work and problem solving skills.
+            </p>
+          </article>
+
+        </section>  
+      </div>
+      <div class="col-sm-4">
+          <br />
+          <img class="inDetailsImage" src="images/lvl1.jpg" alt="Level1Photo">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/lvl2.png" alt="lvl2photo">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/logo2.png" alt="logo2">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/brain.png" alt="brain">
+          <br /><br /><br />
+          <img class="inDetailsImage" src="images/iVolunteer-Awards-Logo.png" alt="volunteer pic">
+      </div>
+    </div>
+    <!-- Skills area. Contains only images representing my skills. Each image contains some effects created with JavaScript. Holding the mouse over an image, it will start to shake until mouse out event happens. -->
+    <h1 id="skillsArea">Skills</h1>
+    <hr>
+    <div id="imadesDiv" class="row">
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/python.png" alt="python">
+        <p>Python</p>
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/MySQL.png" alt="Mysql">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/features_json.png" alt="json">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/java.png" alt="java">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/linux.png" alt="linux">
+        <p>Linux</p>
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/JavaScript.png" alt="javascript">
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/Math.png" alt="math">
+        <p>Maths</p>
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/solr_logo.png" alt="Solr">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/php2.png" alt="PHP">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/struts.png" alt="Struts">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/jquery_logo_color_onwhite.png" alt="jQuery">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/ajax.png" alt="Ajax">
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/html5css31.png" alt="Html5css3">
+        <p>Maths</p>
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/csharp.png" alt="Csharp">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/jsp.png" alt="Jsp">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/junit-logo.png" alt="j/unit">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/unity.png" alt="Unity">
+      </div>
+      <div class="col-sm-2 skills-shape">
+        <img class="skills-img shakeimage" onMouseover="initialState(this);shakeImage()" onMouseout="stopShacking(this);top.focus()" src="images/sql-logo.png" alt="SQL">
+      </div>
+    </div>
+    <!-- The Interests area. 3 images represents my interests and different CSS animation were added to each of them. Animations explained in CSS file -->
+    <h1 id="interestsArea">Interests</h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-4">
+        <img class="interests-img morph" src="images/football.png" alt="Football">
+      </div>
+      <div class="col-sm-4">
+        <img class="interests-img tilt" src="images/chess.png" alt="Chess">
+      </div>
+      <div class="col-sm-4">
+        <br /><br />
+        <img class="interests-img morph" src="images/poker.jpg" alt="WSop">
+      </div>
+    </div>
+    <!-- Awards area. For the second Award listed, I could not present the date as I do not have the details with me in Ireland. -->
+    <h1 id="awardsArea">Awards</h1>
+    <hr>
+    <div class="row details">
+      <div class="col-sm-12">
+        <section>
+          <h3>Outstanding Team Innovation</h3>
+          <p>
+            Awarding Body: Dublin Institute of Technology<br />
+            Date: April 2013<br />
+            International Bake Sale for "Wells for Zoe"</p>
+        </section>
+        <hr>
+        <section>
+          <h3>Evaluation in Education - Mathematics</h3>
+          <p>
+            Awarding Body: Evaluation in Education Fondation<br />
+            Participated five times at this competition during secondary school, Maximilian gained three gold and two silver medals.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Footer esction contains links that can be used for other informations and Contact. -->
+<footer>
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <div class="col-sm-10">
+        <a href="https://ie.linkedin.com/in/maximilianmihoc" target="_blank"><img class="footer-img" src="images/LinkedIn.png" alt="LinkedinLogo"></a>
+        <a href="https://www.facebook.com/maximilian.adrian.16" target="_blank"><img class="footer-img" src="images/facebook-logo-f-sqaure.png" alt="Facebook Logo"></a>
+        <a href="https://twitter.com/MaximilianMihoc" target="_blank"><img class="footer-img" src="images/Twitter_logo_blue.png" alt="Twitter logo"></a>
+      </div>
+      <div class="col-sm-2">
+        <h4>&copy; Maximilian Mihoc</h4>
+      </div>
+    </div>
+  </nav>
+</footer>
+
+</body>
+</html>

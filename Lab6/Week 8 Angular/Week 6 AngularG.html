@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+      <meta charset="utf-8">
+      <title>AngularJS Routing</title>
+ 
+    </head>
+    <body>
+ <!--The ng-app  auto-bootstraps our application mainApp! -->
+      <div ng-app="mainApp">
+	  <!--The ngView directive is the placeholder of the views ( home.html and viewStudents.html).!-->
+        <ng-view></ng-view>
+      </div>
+ <!--nclude angular.min.js and angular-route.min.js!-->
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+	  <!--Include main.js which we have created in the first step.!-->
+      <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,280 @@
+
+/* body tag contains background attributes.*/
+body{
+	font-size: 16px;
+	padding-bottom: 100px;
+	background-image: url('images/LightBackground.png');
+  /* The next properties make the background fixed and it will not repeat.
+     The image is centered in the center of te screen so that it will be 
+     displayed nicely in all screen dimensions. */
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-attachment: fixed;
+
+}
+/* The top id referrs to the top bar from my page. The top id was used for the 
+    jumbotron div. */
+#top {
+	position: relative;
+	color: #000;
+	text-align: center;
+}
+
+/* the next 4 sections are stype properties for the Navigation bar. */
+.nav > li > a {
+    font-size: 25px;
+}
+
+#nav { 
+  /* width 100% is ver here as it requires the nav bar 
+      be take the screen weigth. */
+  width: 100%;
+  background-color: #277455;
+  /* Using a list in the nav bar, this will make sure that no bulet points or some other 
+      list styles are used. */
+	list-style: none;  
+}
+
+#nav li a {
+ 	display: block; 
+	padding: 8px 55.65px; 
+	text-decoration: none; 
+	font-weight: bold; 
+	color: #fff; 
+	border-right: 1px solid #ccc; 
+	border-left: 1px solid #ccc; 
+}
+/* Change shype on mouse over list element from nav bar */
+#nav li a:hover { 
+  background-color: #000; 
+}
+
+.jumbotron{
+  background-color: #277455;
+	padding: 5px;
+}
+
+/* referring to the Personal statement area in the page */
+#personalStatement{
+  /* declare the background-color used here + the transparency of 0.5 */
+	background-color: rgba(0,123,255,0.5); 
+	color: #548; 
+  /* changing the radius of the div from personal Statement */
+	border-radius:1em 1em 0em 0em; 
+	padding: 10px;
+
+}
+
+/* Specific styles used for time and Date */
+#todayDt{
+  /* absolute position required here to make sure this is not dependent of other elements */
+  position: absolute;
+  right: 5px;
+  font-family: 'Orbitron', sans-serif;
+  font-size:20px;
+  text-shadow:0px 0px 1px #fff;
+  color:#fff;
+}
+
+/* Class used for the areas that can be hidden or shown in the page */
+.details{
+	background-color: rgba(0,123,255,0.2); 
+	color: #548;  
+	padding: 10px;
+}
+
+
+.inDetailsImage
+{
+	/*this properties will make sure the image size 
+		changes to fit in the parent when screen size changes*/
+	max-width:100%;
+	max-height:100%;
+}
+
+/* horisontal line properties for the line that is delimiting certain areas */
+hr{
+	color: #2A069C;
+	background-color: #2A069C;
+	height: 2px;
+}
+
+/* box class stype properties. This will define a simple box with a radius for the 
+   bottom corners.  */
+.box{
+    margin: 40px auto;
+    width: 300px;
+    min-height: 310px;
+    padding: 10px;
+    position:relative;
+    text-align: center;
+    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#f3f3f3), to(#fff), color-stop(.1,#f3f3f3));
+    background: -moz-linear-gradient(#fff, #fff);
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom-right-radius: 60px 60px;
+    border-bottom-left-radius: 60px 60px;
+    box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* This class specifies the required higth for the immage included in the box */
+.boxImage{
+	height: 150px;
+}
+
+/* shadow in the bottom left of the box.
+   Position needs to be absolute as I don't want it to depend on other component of the box. */
+.fold_box{
+    z-index: -10;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom:0; left:0;
+    box-shadow: -20px 20px 8px rgba(0, 0, 0, 0.2);
+    -moz-transform: rotate(0deg)
+                        translate(40px,-20px)
+                        skew(-20deg);
+    -webkit-transform: rotate(0deg)
+                        translate(40px,-20px)
+                        skew(-20deg);
+}
+
+/* smaller box in the bottom left that looks like a folded corner. Same as the previous class, this 
+   needs to have absolute position. */
+.fold2_box{
+    width: 25px;
+    height: 20px;
+    z-index:20;
+    background: white;
+    position: absolute;
+    bottom:0; left:0;
+    border-bottom-right-radius: 30px;
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.3);
+    -moz-transform: rotate(103deg)
+                        skew(-3deg,-40deg)
+                        translate(-13px,-15px);
+    -webkit-transform: rotate(103deg)
+                        skew(-3deg,-40deg)
+                        translate(-13px,-15px);
+}
+
+/* This is a box ribbon placed abobe the main box so that the boxes looks like some stickers 
+    stocked on a table.  */
+.box_ribbon{
+    position:absolute;
+    top:-25px; left: 30%;
+    width: 130px;
+    height: 40px;
+    /* Left and right borders are dashed so it looks like a tape */
+    border-left: 1px dashed rgba(0, 0, 0, 0.1);
+    border-right: 1px dashed rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* the folowing properties will make sure that images will not go beyond box dimensions */
+.box img {
+    width: 80%;
+    margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #4A4A4A;
+}
+/* anchor tags will me underlined when mouse over them*/
+a:hover{
+    text-decoration: underline;
+    color: #6B6B6B;
+}
+
+/* Button stype properties */
+.btn {
+  background: #3498db;
+  
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 1px 30px 1px 30px;
+  text-decoration: none;
+}
+
+/* stype properties of the buttons changes when mouse over them */
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
+/* creates the shape for the for one skill image.*/
+.skills-shape{
+  border-radius: 0em 5em 10em 0em;
+  background: rgba(10, 50, 255, 0.2);
+  text-align: center;
+  height: 150px;
+}
+
+/* defines the size of the images used for skills */
+.skills-img{
+  width: 100px;
+  position: relative
+}
+
+/* defines the size of the images used for interests */
+.interests-img{
+  width: 300px;
+}
+
+/* defines the size of the images used for footer */
+.footer-img{
+  width: 30px;
+}
+
+/* text color for footer element */
+footer{
+  color: white;
+}
+
+/* shake image position*/
+.shakeimage{
+position:relative
+}
+
+/* changes image shape smoothly by small gradual steps */
+.morph 
+{
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+ 
+/* on mouse over, the object rotates by 360 degrees and changes shape. */
+.morph:hover 
+{
+  border-radius: 50%;
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+/* changes image shape smoothly by small gradual steps */
+.tilt {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+/* on mouse over, the object rotates by 90 degrees. This is used for chess image in interests. */
+.tilt:hover {
+  -webkit-transform: rotate(90deg);
+     -moz-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}

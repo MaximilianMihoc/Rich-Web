@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+  
+<head>
+<title> AngularJS - Module</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+  
+<body>
+<div ng-app="myModule"
+	<div ng-controller="MyCtrl">
+		<p>Firstname: <input type="text" ng-model="model.firstname"></p>
+		<p>Lastname: <input type="text" ng-model="model.lastname"></p>
+		<p>{{model.firstname + " " + model.lastname}}</p>
+		<button ng-click="click()">Show First Name</button>
+	</div>
+</div>
+<script>
+var myModule = angular.module('myModule',[]);
+myModule.controller('MyCtrl', function ($scope) {
+	var model = { "firstname": "Jack", "lastname": "Smith" };
+	$scope.model = model;
+	$scope.click = function() {
+		alert($scope.model.firstname);
+	};
+});
+
+</script>
+</body>
+</html>
