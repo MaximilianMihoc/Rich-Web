@@ -20,9 +20,27 @@ mainManager.config(['$routeProvider',
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     })
-    .when('/welcome', {
-      templateUrl: 'views/welcome.html',
+    .when('/profile', {
+      templateUrl: 'views/userProfile.html',
       controller: 'AppCtrl',
+      resolve: {
+        currentAuth: function(Authentication){
+          return Authentication.requireAuth();
+        } //current Auth
+      } //resolve
+    })
+    .when('/search/:uid', {
+      templateUrl: 'views/searchCars.html',
+      controller: 'AppCtrl',
+      resolve: {
+        currentAuth: function(Authentication){
+          return Authentication.requireAuth();
+        } //current Auth
+      } //resolve
+    })
+    .when('/details/:make/:model/:year/:uid', {
+      templateUrl: 'views/carDetails.html',
+      controller: 'CarDetailCtrl',
       resolve: {
         currentAuth: function(Authentication){
           return Authentication.requireAuth();
@@ -56,6 +74,6 @@ function get_gravatar(email, size) {
 
     var size = size || 80;
 
-    return 'http://www.gravatar.com/avatar/' + MD5(email) + '.jpg?s=' + size;
+    return 'https://www.gravatar.com/avatar/' + MD5(email) + '.jpg?s=' + size;
 }
 // end of reference

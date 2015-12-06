@@ -1,0 +1,20 @@
+
+
+
+<div class="row">
+    <div class="col-sm-4" ng-controller="RegistrationController">
+		<div ng-show="currentUser">
+			<h2>Welcome {{ currentUser.username }}</h2>
+
+			<img id="profilePic" src="{{ currentUser.profilePictureURL }}">
+			
+			<a ng-href="#/login" ng-click="logout()">Log Out</a>
+		</div>
+		<a ng-href="#/search/{{currentUser.regUser}}">Search</a>
+	</div>
+</div>
+
+
+
+
+

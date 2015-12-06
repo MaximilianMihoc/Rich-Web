@@ -1,0 +1,29 @@
+
+
+<div ng-controller="AppCtrl">
+	<div class="col-sm-12">
+		<div class="" ><h3>Search Cars: <input ng-model="searchText" placeholder="Search"></h3>
+		</div>
+	</div>
+    <div class="row searchItem" ng-repeat="make in cars.makes | filter:searchText">
+		<div class="col-sm-3">
+	      	{{ make.name }}
+	    </div>
+	    <div class="col-sm-3">
+	      	<select name="selectedModel" class="select-style" ng-options="model.name for model in make.models" ng-model="selectedModel" ng-change="selectedYear = selectedModel.years">
+		      <option value="" >-- Pleae select a model --</option>
+		   	</select>
+		</div>
+	    <div class="col-sm-3">
+		   	<select name="selectedYear" class="select-style" ng-options="year.year for year in selectedModel.years" ng-model="selectedYear">
+		   		<option value="" >-- Pleae select a year --</option>
+		   	</select>
+		</div>
+	    <div class="col-sm-3">
+	    	<p ng-model="uid" ng-hide></p>
+		   	<a href="#/details/{{make.name}}/{{selectedModel.name}}/{{selectedYear.year}}/{{uid}}" >View</a>
+		</div> 
+		<br/>
+		<hr>
+	</div>
+</div>

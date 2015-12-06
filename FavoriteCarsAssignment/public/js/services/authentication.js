@@ -27,7 +27,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	        password : user.inputPassword
 	      }).then(function(authData) {
 	          console.log("Authenticated successfully with payload:", authData);
-	          $location.path('/welcome');
+	          $location.path('/profile');
 	      }).catch(function(error){
 	          console.log("Login Failed!", error);
 	          $rootScope.message = 'The specified credentials does not exist. Please Register or try again.';
@@ -61,7 +61,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	        };
 
 	        self.login(loginUser);
-	        $location.path('/welcome');
+	        $location.path('/profile');
 
 	      }).catch(function(error){
 	          console.log("Error creating user:", error);
@@ -90,7 +90,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 
 		          }); //set
 
-		          $location.path('/welcome');
+		          $location.path('/profile');
 
 	          }
 	        }, 
@@ -116,7 +116,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 
 		          }); //set
 
-		          $location.path('/welcome');
+		          $location.path('/profile');
 
 	          }
 	        }, 

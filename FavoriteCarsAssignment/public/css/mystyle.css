@@ -100,3 +100,39 @@ input.ng-valid.ng-touched {
   color: red;
   padding-bottom: 10px;
 }
+
+#profilePic{
+    width: 96px;
+    height: 96px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%; 
+}
+
+.slidePic{
+    width: 300px;
+    display: block;
+
+}
+
+hr{
+    color: #2A069C;
+    background-color: #2A069C;
+    height: 2px;
+}
+
+.select-style {
+    width: 70%;
+}
+
+.searchItem {
+    padding: 5px;
+    border: 2px solid #2A069C;
+    border-radius: 2em 2em 2em 2em;
+    margin: 5px;
+}
+
+.review {
+    
+}

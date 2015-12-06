@@ -1,7 +1,5 @@
-mainManager.controller('RegistrationController', [ '$scope', 'Authentication',
+mainManager.controller('RegistrationController', [ '$scope', 'Authentication', 
   function($scope, Authentication) {
-
-  	$scope.isLoggedIn = true;
 
   	$scope.login = function(){
   		Authentication.login($scope.user);
@@ -15,7 +13,7 @@ mainManager.controller('RegistrationController', [ '$scope', 'Authentication',
   		Authentication.gitHublogin();
   	} //github authentication
 
-	$scope.googleLogin = function(){
+	  $scope.googleLogin = function(){
   		Authentication.googleLogin();
   	} //github authentication
 
