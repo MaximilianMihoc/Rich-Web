@@ -1,11 +1,44 @@
-<h2>Car Details</h2>
 
-<div class="row">
-	<!--<div>{{ styles }}</div>-->
-	<div class="col-sm-12">
-		<select name="selStyle" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showDetails()">
-	   </select>
+<div class="row" ng-show="vehicle">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors</h2>
+			Style <select name="selStyle" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showDetails(); showPictures(); showReviews()">
+		   </select>
+	   	</div>
    	</div>
+   	<!-- More Car Details -->
+   	<div class="row" >
+   		<div class="col-sm-4">
+   			<h4>Engine: {{vehicle.engine.name}}</h4>
+   			Compression Ratio: {{vehicle.engine.compressionRatio}} <br/>
+   			Cylinger: {{vehicle.engine.cylinder}} <br/>
+   			Size: {{vehicle.engine.size}} <br/>
+   			Displacement: {{vehicle.engine.displacement}} <br/>
+   			Configuration: {{vehicle.engine.configuration}} <br/>
+   			Fuel Type: {{vehicle.engine.fuelType}} <br/>
+   			Horse Power: {{vehicle.engine.horsepower}}<br/>
+   			Torque: {{vehicle.engine.torque}}<br/>
+   			Total Valves: {{vehicle.engine.totalValves}}<br/>
+   			Manufacturer Engine Code: {{vehicle.engine.manufacturerEngineCode}}<br/>
+   			Type: {{vehicle.engine.type}}<br/>
+   			Code: {{vehicle.engine.code}}<br/>
+   			Compressor Type: {{vehicle.engine.compressorType}}<br/>
+   		</div>
+   		<div class="col-sm-4">
+   			<h4>Transmission: {{vehicle.transmission.name}}</h4>
+   			Transmission Type: {{vehicle.transmission.transmissionType}}<br/>
+   			Number Of Speeds: {{vehicle.transmission.numberOfSpeeds}}<br/>
+
+   			<h4>Categories: </h4>
+   			Market: {{vehicle.categories.market}}<br/>
+   			EPA Class: {{vehicle.categories.EPAClass}}<br/>
+   			Vehicle Size: {{vehicle.categories.vehicleSize}}<br/>
+   			Vehicle Stype: {{vehicle.categories.vehicleStyle}}<br/>
+   		</div>
+
+   	</div>
+
    	<h2 id="">Exterior Pictures</h2>
 	<hr>
 	<div class="row">
@@ -26,7 +59,6 @@
 	<h2 id="">Car Reviews</h2>
 	<hr>
 	<br/>
-
 	<!-- Reviews Section -->
 	<div class="row" id="reviews-container"></div>
 

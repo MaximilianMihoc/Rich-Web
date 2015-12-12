@@ -111,7 +111,7 @@ input.ng-valid.ng-touched {
 }
 
 .slidePic{
-    width: 300px;
+    max-width: 100%;
     display: block;
 
 }

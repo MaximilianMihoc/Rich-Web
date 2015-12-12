@@ -5,6 +5,7 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
   	var model = $routeParams.model;
   	var year = $routeParams.year;
   	var userUid = $routeParams.uid;
+  	var styleId;
 
 	var responsePromise = $http.get("https://api.edmunds.com/api/vehicle/v2/"+make+"/"+model+"/"+year+"/styles?fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
 	
@@ -12,14 +13,31 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 			$scope.styles = data.styles;
 			$scope.selectedStyle = data.styles[0];
 			$scope.showDetails();
+			$scope.showPictures();
+			$scope.showReviews();
 
 	});
 	responsePromise.error(function(data, status, headers, config) {
 		alert("AJAX failed!");
 	});
 
-	var styleId;
+	
 	$scope.showDetails = function() {
+		styleId = $scope.selectedStyle.id;
+		var fullDetailsByStyleID = $http.get("https://api.edmunds.com/api/vehicle/v2/styles/"+styleId+"?view=full&fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
+	
+		fullDetailsByStyleID.success(function(data, status, headers, config) {
+			$scope.vehicle = data;
+
+		});
+		fullDetailsByStyleID.error(function(data, status, headers, config) {
+			alert("AJAX failed! - showDetails function");
+		});
+
+	} // end showDetails
+
+
+	$scope.showPictures = function() {
 
 		styleId = $scope.selectedStyle.id;
 		var photoByStyleID = $http.get("https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId="+styleId+"&fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
@@ -59,39 +77,44 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 
 			    $scope.photoArray = photoArray.photoData;
 			}
-
-			var fireBaseReviews = new Firebase(FIREBASE_URL + "carReviews/" + styleId);
-		    fireBaseReviews.on('child_added', function(snapshot) {
-		        var uniqName = snapshot.key();
-		        var review = snapshot.val().comment;
-		        var reviewsContainer = $('#reviews-container');
-		        var reviewUser = snapshot.val().regUser;
-
-		        // get user profilepic and username
-		        var regRef = new Firebase(FIREBASE_URL + "users/" + reviewUser);
-		        console.log(FIREBASE_URL + "users/" + reviewUser);
-		        var reviewUserName;
-		        var reviewUserProfileImg;
-
-		        regRef.on("value", function(snapshot) {
-				  	reviewUserName = snapshot.val().username;
-				  	reviewUserProfileImg = snapshot.val().profilePictureURL;
-
-				  	$('<div/>', {class: 'review'})
-		            	.html('<img src=" ' + reviewUserProfileImg + '"/>' + reviewUserName + ': ' + review).appendTo(reviewsContainer);
-
-		        	reviewsContainer.scrollTop(reviewsContainer.prop('scrollHeight'));
-				}, function (errorObject) {
-				  console.log("Fevied user Data could not be loaded: " + errorObject.code);
-				});
-				
-		    });
-
 		});
 		photoByStyleID.error(function(data, status, headers, config) {
-			alert("AJAX failed!");
+			alert("AJAX failed! - showPictures function. Data: " + data);
 		});
-	};
+	} // end showPictures
+
+	$scope.showReviews = function() {
+		styleId = $scope.selectedStyle.id;
+		$('#reviews-container').empty();
+
+		var fireBaseReviews = new Firebase(FIREBASE_URL + "carReviews/" + styleId);
+	    fireBaseReviews.on('child_added', function(snapshot) {
+	        var uniqName = snapshot.key();
+	        var reviewComm = snapshot.val().comment;
+	        var reviewsContainer = $('#reviews-container');
+	        var reviewUser = snapshot.val().regUser;
+
+
+	        // get user profilepic and username
+	        var regRef = new Firebase(FIREBASE_URL + "users/" + reviewUser);
+	        console.log(FIREBASE_URL + "users/" + reviewUser);
+	        var reviewUserName;
+	        var reviewUserProfileImg;
+
+	        regRef.on("value", function(snapshot) {
+			  	reviewUserName = snapshot.val().username;
+			  	reviewUserProfileImg = snapshot.val().profilePictureURL;
+
+			  	$('<div/>', {class: 'col-sm-12 review'})
+	            	.html('<img src=" ' + reviewUserProfileImg + '"/>' + reviewUserName + ': ' + reviewComm).appendTo(reviewsContainer);
+
+	        	reviewsContainer.scrollTop(reviewsContainer.prop('scrollHeight'));
+			}, function (errorObject) {
+			  console.log("Fevied user Data could not be loaded: " + errorObject.code);
+			});
+			$route.reload();
+	    });
+	} // end showReviews
 
 	$("#submit-btn").bind("click", function(e) {
 		styleId = $scope.selectedStyle.id;
