@@ -106,15 +106,27 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 			  	reviewUserProfileImg = snapshot.val().profilePictureURL;
 
 			  	$('<div/>', {class: 'col-sm-12 review'})
-	            	.html('<img src=" ' + reviewUserProfileImg + '"/>' + reviewUserName + ': ' + reviewComm).appendTo(reviewsContainer);
+	            	.html('<img class="userReviewPic" src=" ' + reviewUserProfileImg + '"/><b>' + reviewUserName + '</b><br/> ' + reviewComm).appendTo(reviewsContainer);
 
 	        	reviewsContainer.scrollTop(reviewsContainer.prop('scrollHeight'));
 			}, function (errorObject) {
 			  console.log("Fevied user Data could not be loaded: " + errorObject.code);
 			});
-			$route.reload();
 	    });
 	} // end showReviews
+
+	$scope.addCarToFavorites = function() {
+		console.log("Car added to favorites");
+		styleId = $scope.selectedStyle.id;
+		var fireBaseRef = new Firebase(FIREBASE_URL + "users/" + userUid + "/favoriteCars")
+	        .child(styleId).set({
+	            date: Firebase.ServerValue.TIMESTAMP,
+	            styleId: styleId,
+	            make: make,
+	            model: model,
+	            year: year
+	        });
+	} //end Add Car To Favorites
 
 	$("#submit-btn").bind("click", function(e) {
 		styleId = $scope.selectedStyle.id;

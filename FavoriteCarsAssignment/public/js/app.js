@@ -22,7 +22,7 @@ mainManager.config(['$routeProvider',
     })
     .when('/profile', {
       templateUrl: 'views/userProfile.html',
-      controller: 'AppCtrl',
+      controller: 'ProfileCtrl',
       resolve: {
         currentAuth: function(Authentication){
           return Authentication.requireAuth();
@@ -31,7 +31,7 @@ mainManager.config(['$routeProvider',
     })
     .when('/search/:uid', {
       templateUrl: 'views/searchCars.html',
-      controller: 'AppCtrl',
+      controller: 'SearchCtrl',
       resolve: {
         currentAuth: function(Authentication){
           return Authentication.requireAuth();

@@ -1,11 +1,14 @@
 
 <div class="row" ng-show="vehicle">
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-9">
 			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors</h2>
 			Style <select name="selStyle" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showDetails(); showPictures(); showReviews()">
 		   </select>
 	   	</div>
+	   	<div class="col-sm-3">
+	   		<button ng-click="addCarToFavorites()">Add Car to Favorites</button>
+	   </div>
    	</div>
    	<!-- More Car Details -->
    	<div class="row" >
@@ -25,16 +28,35 @@
    			Code: {{vehicle.engine.code}}<br/>
    			Compressor Type: {{vehicle.engine.compressorType}}<br/>
    		</div>
-   		<div class="col-sm-4">
-   			<h4>Transmission: {{vehicle.transmission.name}}</h4>
+   		<div class="col-sm-3">
+   			<h4>Transmission {{vehicle.transmission.name}}</h4>
    			Transmission Type: {{vehicle.transmission.transmissionType}}<br/>
    			Number Of Speeds: {{vehicle.transmission.numberOfSpeeds}}<br/>
 
-   			<h4>Categories: </h4>
+   			<h4>Categories </h4>
    			Market: {{vehicle.categories.market}}<br/>
    			EPA Class: {{vehicle.categories.EPAClass}}<br/>
    			Vehicle Size: {{vehicle.categories.vehicleSize}}<br/>
    			Vehicle Stype: {{vehicle.categories.vehicleStyle}}<br/>
+
+   			<h4>Prices</h4>
+   			Base MSRP: &euro; {{vehicle.price.baseMSRP}} <br/>
+   			Base Invoice: &euro; {{vehicle.price.baseInvoice}} <br/>
+   			Devivery Charges: &euro; {{vehicle.price.deliveryCharges}} <br/>
+   		</div>
+
+   		<div class="col-sm-5">
+   			<h4>Options</h4>
+   			<div class="optionsDiv">
+	   			<div ng-repeat="option in vehicle.options">
+	   				<h4>{{option.category}}</h4>
+	   				<div ng-repeat="op in option.options">
+	   					<b>{{op.name}}</b>
+	   					<p>{{op.description}}</p>
+	   				</div>
+	   				<hr>
+	   			</div> 
+   			</div>
    		</div>
 
    	</div>
