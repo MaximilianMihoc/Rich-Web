@@ -3,6 +3,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	
 	var ref = new Firebase(FIREBASE_URL);
     var auth = $firebaseAuth(ref);
+    var userObject;
 
     auth.$onAuth(function(authData) {
      
@@ -13,6 +14,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
     		$rootScope.auth = authData;
 
     		$rootScope.currentUser = userObj;
+    		userObject = userObj;
     	}else{
     		$rootScope.auth = '';
     		$rootScope.currentUser = '';
@@ -71,6 +73,9 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	  	logout: function() {
 	    	return auth.$unauth();
 	    }, //logout
+	    getUserObject: function() {
+	    	return userObject.regUser;
+	    }, // getUserObject
 	    requireAuth: function() {
 	    	return auth.$requireAuth();
 	    }, //require Authentication

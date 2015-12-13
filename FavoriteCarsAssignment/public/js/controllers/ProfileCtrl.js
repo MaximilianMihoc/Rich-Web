@@ -1,15 +1,24 @@
-mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', '$routeParams', '$http',
-  function($scope, Authentication, $routeParams, $http) {
-
-  	var responsePromise = $http.get("https://api.edmunds.com/api/vehicle/v2/makes?state=new&fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
+mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', 'FIREBASE_URL',
+  function($scope, Authentication, FIREBASE_URL) {
 	
-	responsePromise.success(function(data, status, headers, config) {
-			$scope.cars = data;
-			$scope.uid = $routeParams.uid;
+  	var uid = Authentication.getUserObject();
+	
+	console.log(uid);
+	//console.log(uid.regUser);
+	console.log(FIREBASE_URL + "users/" + uid + "/favoriteCars");
+  	var regRef = new Firebase(FIREBASE_URL + "users/" + uid + "/favoriteCars");
 
+    regRef.on("value", function(snapshot) {
+	  	var reviewUserName = snapshot.val();
+	  	console.log(reviewUserName);
+
+	}, function (errorObject) {
+	  console.log("Fevied user Data could not be loaded: " + errorObject.code);
 	});
-	responsePromise.error(function(data, status, headers, config) {
-		alert("AJAX failed!");
-	});
+
+
+
+
+
 }]); // End AppCtrl Controller 
 

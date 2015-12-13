@@ -8,9 +8,15 @@
 
 			<img id="profilePic" src="{{ currentUser.profilePictureURL }}">
 			
+			<p id="userID" ng-hide="true">{{currentUser.regUser}}</p>
+
 			<a ng-href="#/login" ng-click="logout()">Log Out</a>
 		</div>
 		<a ng-href="#/search/{{currentUser.regUser}}">Search</a>
+	</div>
+	<div class="col-sm-4">
+		<h2> Your Favorite cars are </h2>
+
 	</div>
 </div>
 

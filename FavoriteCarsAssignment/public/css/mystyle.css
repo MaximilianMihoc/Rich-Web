@@ -145,6 +145,24 @@ hr{
     padding-left: 20px;
 }
 
-.userReviewPic{
+.userReviewPic {
     width: 100px;
+}
+
+.equipment-style {
+    
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+.equipmentElement {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 0px 10px 10px 10px;
+    margin: 10px;
+    background:rgba(0,0,0,0.25);
 }

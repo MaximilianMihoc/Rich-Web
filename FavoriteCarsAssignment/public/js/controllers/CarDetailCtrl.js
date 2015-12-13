@@ -12,6 +12,8 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	responsePromise.success(function(data, status, headers, config) {
 			$scope.styles = data.styles;
 			$scope.selectedStyle = data.styles[0];
+			$scope.showSummaryRatings();
+			$scope.getEquipment();
 			$scope.showDetails();
 			$scope.showPictures();
 			$scope.showReviews();
@@ -36,6 +38,33 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 
 	} // end showDetails
 
+	$scope.showSummaryRatings = function() {
+		styleId = $scope.selectedStyle.id;
+		var summaryRatings = $http.get("https://api.edmunds.com/api/vehicle/v2/styles/"+styleId+"/grade?fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
+	
+		summaryRatings.success(function(data, status, headers, config) {
+			$scope.carRating = data;
+
+		});
+		summaryRatings.error(function(data, status, headers, config) {
+			//alert("AJAX failed! - showSummaryRatings function");
+			//console.log(data)
+		});
+	} //end showSummaryRatings
+
+	$scope.getEquipment = function() {
+		styleId = $scope.selectedStyle.id;
+		var equipmentData = $http.get("https://api.edmunds.com/api/vehicle/v2/styles/"+styleId+"/equipment?availability=standard&equipmentType=OTHER&fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
+	
+		equipmentData.success(function(data, status, headers, config) {
+			$scope.equipmentArray = data.equipment;
+
+		});
+		equipmentData.error(function(data, status, headers, config) {
+			//alert("AJAX failed! - showSummaryRatings function");
+			//console.log(data)
+		});
+	} //end showSummaryRatings
 
 	$scope.showPictures = function() {
 
