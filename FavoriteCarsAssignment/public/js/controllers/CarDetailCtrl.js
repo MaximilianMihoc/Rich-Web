@@ -11,7 +11,21 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	
 	responsePromise.success(function(data, status, headers, config) {
 			$scope.styles = data.styles;
-			$scope.selectedStyle = data.styles[0];
+
+			var routeStyleid = $routeParams.styleid;
+			console.log(routeStyleid);
+
+			if(typeof routeStyleid === 'undefined')
+				$scope.selectedStyle = data.styles[0];
+			else 
+			{ // show the car with the style id specified in url
+				for(var i=0; i<data.styles.length; i++)
+				{
+					if(routeStyleid == data.styles[i].id) $scope.selectedStyle = data.styles[i];
+				}
+			}
+				
+
 			$scope.showSummaryRatings();
 			$scope.getEquipment();
 			$scope.showDetails();
@@ -147,10 +161,11 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	$scope.addCarToFavorites = function() {
 		console.log("Car added to favorites");
 		styleId = $scope.selectedStyle.id;
-		var fireBaseRef = new Firebase(FIREBASE_URL + "users/" + userUid + "/favoriteCars")
+		var fireBaseRef = new Firebase(FIREBASE_URL + "favoriteCars/" + userUid)
 	        .child(styleId).set({
 	            date: Firebase.ServerValue.TIMESTAMP,
 	            styleId: styleId,
+	            styleName: $scope.selectedStyle.name,
 	            make: make,
 	            model: model,
 	            year: year

@@ -20,7 +20,7 @@ mainManager.config(['$routeProvider',
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     })
-    .when('/profile', {
+    .when('/profile/:uid', {
       templateUrl: 'views/userProfile.html',
       controller: 'ProfileCtrl',
       resolve: {
@@ -39,6 +39,15 @@ mainManager.config(['$routeProvider',
       } //resolve
     })
     .when('/details/:make/:model/:year/:uid', {
+      templateUrl: 'views/carDetails.html',
+      controller: 'CarDetailCtrl',
+      resolve: {
+        currentAuth: function(Authentication){
+          return Authentication.requireAuth();
+        } //current Auth
+      } //resolve
+    })
+    .when('/details/:make/:model/:year/:styleid/:uid', {
       templateUrl: 'views/carDetails.html',
       controller: 'CarDetailCtrl',
       resolve: {

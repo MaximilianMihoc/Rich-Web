@@ -1,21 +1,22 @@
-mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', 'FIREBASE_URL',
-  function($scope, Authentication, FIREBASE_URL) {
+mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', '$routeParams', 'FIREBASE_URL',
+  function($scope, Authentication, $routeParams, FIREBASE_URL) {
 	
-  	var uid = Authentication.getUserObject();
+  	var uid = $routeParams.uid;
+  	$scope.uid = uid;
 	
 	console.log(uid);
 	//console.log(uid.regUser);
-	console.log(FIREBASE_URL + "users/" + uid + "/favoriteCars");
-  	var regRef = new Firebase(FIREBASE_URL + "users/" + uid + "/favoriteCars");
+	console.log(FIREBASE_URL + "favoriteCars/" + uid);
+  	var regRef = new Firebase(FIREBASE_URL + "favoriteCars/" + uid);
 
     regRef.on("value", function(snapshot) {
-	  	var reviewUserName = snapshot.val();
-	  	console.log(reviewUserName);
+	  	var favCars = snapshot.val();
+	  	//console.log(favCars);
+	  	$scope.favCars = favCars;
 
 	}, function (errorObject) {
 	  console.log("Fevied user Data could not be loaded: " + errorObject.code);
 	});
-
 
 
 
