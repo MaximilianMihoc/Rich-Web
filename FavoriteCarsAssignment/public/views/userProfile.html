@@ -14,7 +14,7 @@
 		</div>
 		<a ng-href="#/search/{{currentUser.regUser}}">Search</a>
 	</div>
-	<div class="col-sm-4" ng-show="uid">
+	<div class="col-sm-4">
 		<h2> Your Favorite cars are </h2>
 		<div ng-repeat="favcar in favCars">
 			<a href="#/details/{{favcar.make}}/{{favcar.model}}/{{favcar.year}}/{{favcar.styleId}}/{{uid}}">{{favcar.make}} {{favcar.model}} {{favcar.year}} {{favcar.styleName}}</a>

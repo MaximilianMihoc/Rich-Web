@@ -8,10 +8,6 @@ var mainManager = angular.module('mainManager', ['ngRoute','firebase'])
 mainManager.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
-    .when('/home', {
-      templateUrl: 'views/home.html',
-      controller: 'FirstCtrl'
-    })
     .when('/login', {
       templateUrl: 'views/logInPage.html',
       controller: 'RegistrationController'
@@ -57,7 +53,7 @@ mainManager.config(['$routeProvider',
       } //resolve
     })
     .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/login'
     });
 
 }]);
