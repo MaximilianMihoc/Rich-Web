@@ -136,20 +136,23 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	        var reviewComm = snapshot.val().comment;
 	        var reviewsContainer = $('#reviews-container');
 	        var reviewUser = snapshot.val().regUser;
-
+			
+	        var timeReview = snapshot.val().date;
+		  	var dateStr = new Date(timeReview).toLocaleString();
 
 	        // get user profilepic and username
 	        var regRef = new Firebase(FIREBASE_URL + "users/" + reviewUser);
 	        console.log(FIREBASE_URL + "users/" + reviewUser);
 	        var reviewUserName;
 	        var reviewUserProfileImg;
+	        
 
 	        regRef.on("value", function(snapshot) {
 			  	reviewUserName = snapshot.val().username;
 			  	reviewUserProfileImg = snapshot.val().profilePictureURL;
 
-			  	$('<div/>', {class: 'col-sm-12 review'})
-	            	.html('<img class="userReviewPic" src=" ' + reviewUserProfileImg + '"/><b>' + reviewUserName + '</b><br/> ' + reviewComm).appendTo(reviewsContainer);
+			  	$('<div/>', {class: 'col-sm-12'})
+	            	.html('<div class="row review"><div class="col-sm-1"><img class="userReviewPic" src=" ' + reviewUserProfileImg + '"/><br/></div><div class="col-sm-11 reviewText"><br/><b>' + reviewUserName + '</b><br/>' + reviewComm + '<br/>' + dateStr + '</div></div>').appendTo(reviewsContainer);
 
 	        	reviewsContainer.scrollTop(reviewsContainer.prop('scrollHeight'));
 			}, function (errorObject) {

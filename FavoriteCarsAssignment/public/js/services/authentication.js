@@ -3,7 +3,6 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	
 	var ref = new Firebase(FIREBASE_URL);
     var auth = $firebaseAuth(ref);
-    var userObject;
 
     auth.$onAuth(function(authData) {
      
@@ -13,8 +12,6 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 
     		$rootScope.auth = authData;
     		$rootScope.currentUser = userObj;
-
-    		userObject = userObj;
     	}else{
     		$rootScope.auth = '';
     		$rootScope.currentUser = '';

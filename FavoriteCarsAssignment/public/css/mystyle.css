@@ -1,3 +1,7 @@
+body{
+    padding-bottom: 100px;
+}
+
 .form-signin
 {
     max-width: 330px;
@@ -42,10 +46,7 @@
 {
     margin-top: 20px;
     padding: 40px 0px 20px 0px;
-    background-color: #f7f7f7;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    
 }
 .login-title
 {
@@ -77,11 +78,20 @@
 #top {
     position: relative;
     color: #000;
-    text-align: center;
+}
+.appName {
+    font-family: Rockwell, 'Courier Bold', Courier, Georgia, Times, 'Times New Roman', serif;
+    font-size: 60px;
+    font-style: normal;
+    font-variant: normal;
 }
 .jumbotron{
   background-color: #277455;
     padding: 5px;
+}
+
+.navImg {
+    width: 100%;
 }
 
 input.ng-invalid.ng-touched {
@@ -102,8 +112,7 @@ input.ng-valid.ng-touched {
 }
 
 #profilePic{
-    width: 96px;
-    height: 96px;
+    height: 150px;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -123,18 +132,44 @@ hr{
 }
 
 .select-style {
-    width: 70%;
+    width: 80%;
+    height: 34px;
+    font-size: 16px;
+    line-height: 1;   
 }
 
 .searchItem {
     padding: 5px;
     border: 2px solid #2A069C;
-    border-radius: 2em 2em 2em 2em;
+    border-radius: 0em 2em 0em 2em;
     margin: 5px;
 }
 
+.carName {
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.text {
+    font-size: 25px;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.footer-img{
+  width: 100px;
+  padding-top: 10px;
+}
+
 .review {
-    
+    border: 2px solid #2A069C;
+    border-radius: 0em 2em 0em 2em;
+    margin-bottom: 10px;
+}
+
+.reviewText {
+    padding-left: 30px;
 }
 
 .optionsDiv {

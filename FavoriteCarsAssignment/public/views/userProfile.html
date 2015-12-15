@@ -2,19 +2,13 @@
 
 
 <div class="row">
-    <div class="col-sm-4" ng-controller="RegistrationController">
-		<div ng-show="currentUser">
-			<h2>Welcome {{ currentUser.username }}</h2>
-
-			<img id="profilePic" src="{{ currentUser.profilePictureURL }}">
-			
-			<p id="userID" ng-hide="true">{{currentUser.regUser}}</p>
-
-			<a ng-href="#/login" ng-click="logout()">Log Out</a>
-		</div>
-		<a ng-href="#/search/{{currentUser.regUser}}">Search</a>
+    <div class="col-sm-6" ng-controller="RegistrationController" ng-show="currentUser">
+    	<h2>Welcome {{ currentUser.username }}</h2>
+		<img id="profilePic" src="{{ currentUser.profilePictureURL }}">
+		<a ng-href="#/search/{{currentUser.regUser}}">Search Cars</a><br/>
+		<a ng-href="#/login" ng-click="logout()">Log Out</a>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-6">
 		<h2> Your Favorite cars are </h2>
 		<div ng-repeat="favcar in favCars">
 			<a href="#/details/{{favcar.make}}/{{favcar.model}}/{{favcar.year}}/{{favcar.styleId}}/{{uid}}">{{favcar.make}} {{favcar.model}} {{favcar.year}} {{favcar.styleName}}</a>

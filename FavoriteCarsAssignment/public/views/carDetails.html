@@ -3,12 +3,12 @@
 	<div class="row">
 		<div class="col-sm-9">
 			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors</h2>
-			<b>Style</b> <select name="selStyle" class="select-style" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showSummaryRatings(); getEquipment(); showDetails(); showPictures(); showReviews()">
+			<b class="text">Style</b> <select name="selStyle" class="select-style" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showSummaryRatings(); getEquipment(); showDetails(); showPictures(); showReviews()">
 		   </select>
 	   	</div>
 	   	<div class="col-sm-3">
-	   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-	   		<button class="btn btn-info btn-lg" ng-click="addCarToFavorites()">Add Car to Favorites</button>
+	   		<button type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal">See Car Equipment</button>
+	   		<button class="btn btn-lg btn-primary btn-block" ng-click="addCarToFavorites()">Add Car to Favorites</button>
 
 	   </div>
    	</div>
@@ -26,8 +26,6 @@
    	</div>
 
 	<!-- Equipment Modal -->
-	
-
   	<div class="modal fade" id="myModal" role="dialog">
 	    <div class="modal-dialog">
 			<!-- Modal content-->
@@ -52,19 +50,6 @@
 			</div>
 	   	</div>
 	</div>
-
-	<!--<h2>Equipment</h2>
-	<hr>
-   	<div class="row">
-   		<div class="col-sm-4" ng-repeat="equipment in equipmentArray">
-   			Name: {{equipment.name}}
-   			Type: {{equipment.equipmentType}}
-   			Availability: {{equipment.availability}}
-   			<ul>
-   				<li ng-repeat="attribute in equipment.attributes">{{ attribute.name}} : {{ attribute.value }}</li>
-   			</ul>
-   		</div>
-   	</div>-->
 
    	<h2>Car Details</h2>
 	<hr>
@@ -118,7 +103,7 @@
 
    	</div>
 
-   	<h2 id="">Exterior Pictures</h2>
+   	<h2>Exterior Pictures</h2>
 	<hr>
 	<div class="row">
 		<div class="col-sm-4" ng-repeat="photo in photoArray" ng-if="photo.subType==='exterior'">
@@ -126,7 +111,8 @@
 	   		<br/>
 	   </div>
 	</div>
-	<h2 id="">Interior Pictures</h2>
+	
+	<h2>Interior Pictures</h2>
 	<hr>
 	<br/>
 	<div class="row">
@@ -135,7 +121,8 @@
 	   		<br/>
 	   </div>
    	</div> 
-	<h2 id="">Car Reviews</h2>
+
+	<h2>Car Reviews</h2>
 	<hr>
 	<br/>
 	<!-- Reviews Section -->
