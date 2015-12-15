@@ -29,6 +29,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	          $location.path('/profile/' + authData.uid );
 	          $rootScope.currentPath = $location.path();
 	          location.reload();
+	          $scope.$apply();
 	      }).catch(function(error){
 	          console.log("Login Failed!", error);
 	          $rootScope.message = 'The specified credentials does not exist. Please Register or try again.';
@@ -64,6 +65,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	        $location.path('/profile/' + userData.uid );
 	        $rootScope.currentPath = $location.path();
 	        location.reload();
+	        $scope.$apply();
 	      }).catch(function(error){
 	          console.log("Error creating user:", error);
 	      });
