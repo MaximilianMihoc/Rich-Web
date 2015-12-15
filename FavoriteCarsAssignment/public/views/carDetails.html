@@ -90,7 +90,7 @@
    		<div class="col-sm-5">
    			<h4>Options</h4>
    			<div class="optionsDiv">
-	   			<div ng-repeat="option in vehicle.options">
+	   			<div ng-if="vehicle.options.length" ng-repeat="option in vehicle.options">
 	   				<h4>{{option.category}}</h4>
 	   				<div ng-repeat="op in option.options">
 	   					<b>{{op.name}}</b>
@@ -98,6 +98,9 @@
 	   				</div>
 	   				<hr>
 	   			</div> 
+	   			<div ng-if="!vehicle.options.length">
+	   				<img class="optionsImage" src="images/no-data.png">
+	   			</div>
    			</div>
    		</div>
 

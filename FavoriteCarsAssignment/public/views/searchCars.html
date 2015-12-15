@@ -23,7 +23,7 @@
 		</div>
 	    <div class="col-sm-3">
 	    	<p ng-model="uid" ng-hide></p>
-		   	<a href="#/details/{{make.name}}/{{selectedModel.name}}/{{selectedYear.year}}/{{uid}}"><button class="btn btn-lg btn-primary btn-block">View Details</button></a>
+		   	<a class="btn btn-lg btn-primary btn-block" ng-disabled="!selectedModel || selectedYear.id==null" href="#/details/{{make.name}}/{{selectedModel.name}}/{{selectedYear.year}}/{{uid}}">View Details</a>
 		</div> 
 		
 	</div>

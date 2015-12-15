@@ -16,7 +16,7 @@
 	            <div class="form-group">
 	                <label for="InputEmail">Enter Email</label>
 	                <div class="input-group">
-	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" ng-model="user.inputEmail" placeholder="Enter Email" ng-required="true">
+	                    <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" ng-model="user.inputEmail" placeholder="Enter Email" ng-required="true" >
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
@@ -25,11 +25,12 @@
 	            <div class="form-group">
 	                <label for="InputEmail">Confirm Email</label>
 	                <div class="input-group">
-	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputConfirmEmail" placeholder="Confirm Email" ng-model="user.inputEmailSecond" ng-required="true">
+	                    <input type="email" class="form-control" id="InputEmailSecond" name="InputConfirmEmail" placeholder="Confirm Email" ng-model="user.inputEmailSecond" ng-required="true" match="user.inputEmail">
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
-	            <p class="error validationerror" ng-show="registerForm.InputConfirmEmail.$invalid && registerForm.InputConfirmEmail.$touched">Must be a valid email</p>
+	            <p class="error validationerror" ng-show="registerForm.InputConfirmEmail.$invalid && registerForm.InputConfirmEmail.$touched && registerForm.InputConfirmEmail.$error.match">Confirm Email is not valid or emails do not match</p>
+	            
 
 	            <div class="form-group">
 	                <label for="InputMessage">Enter Password</label>
@@ -43,11 +44,11 @@
 	            <div class="form-group">
 	                <label for="InputMessage">Confirm Password</label>
 	                <div class="input-group">
-	                    <input type="password" class="form-control" id="InputPasswordSecond" name="InputPasswordSecond" placeholder="Confirm Password" ng-model="user.InputPasswordSecond" ng-required="true">
+	                    <input type="password" class="form-control" id="InputPasswordSecond" name="InputPasswordSecond" placeholder="Confirm Password" ng-model="user.InputPasswordSecond" ng-required="true" match="user.inputPassword">
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
-				<p class="error validationerror" ng-show="registerForm.InputPasswordSecond.$invalid && registerForm.InputPasswordSecond.$touched">Confirm Password is required</p>
+				<p class="error validationerror" ng-show="registerForm.InputPasswordSecond.$invalid && registerForm.InputPasswordSecond.$touched && registerForm.InputPasswordSecond.$error.match">Confirm Password is required</p>
 
 	            <button type="submit" name="submit" id="submit" class="btn btn-info pull-right" ng-disabled="registerForm.$invalid">Submit</button>
 

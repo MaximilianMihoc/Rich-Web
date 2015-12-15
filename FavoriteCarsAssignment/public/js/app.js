@@ -1,6 +1,6 @@
 
 
-var mainManager = angular.module('mainManager', ['ngRoute','firebase'])
+var mainManager = angular.module('mainManager', ['ngRoute','firebase','validation.match'])
 .constant('FIREBASE_URL', 'https://favoritecars.firebaseio.com/');
 
 //var ref = new Firebase("https://favoritecars.firebaseio.com/");
