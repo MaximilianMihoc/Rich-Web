@@ -2,7 +2,7 @@
 <div class="row" ng-show="vehicle">
 	<div class="row">
 		<div class="col-sm-9">
-			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors</h2>
+			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors - {{vehicle.year.year}}</h2>
 			<b class="text">Style</b> <select name="selStyle" class="select-style" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showSummaryRatings(); getEquipment(); showDetails(); showPictures(); showReviews()">
 		   </select>
 	   	</div>
@@ -103,33 +103,39 @@
 	   			</div>
    			</div>
    		</div>
-
    	</div>
 
-   	<h2>Exterior Pictures</h2>
-	<hr>
-	<div class="row">
-		<div class="col-sm-4" ng-repeat="photo in photoArray" ng-if="photo.subType==='exterior'">
-	   		<img class="slidePic" ng-src="{{ photo.imageSrc }}" alt="photo.captionTranscript" />
-	   		<br/>
-	   </div>
+   	<div ng-if="photoArray.length">
+	   	<h2>Exterior Pictures</h2>
+		<hr>
+		<div class="row">
+			<div class="col-sm-4" ng-repeat="photo in photoArray" ng-if="photo.subType==='exterior'">
+		   		<img class="slidePic" ng-src="{{ photo.imageSrc }}" alt="photo.captionTranscript" />
+		   		<br/>
+		   </div>
+		</div>
+		
+		<h2>Interior Pictures</h2>
+		<hr>
+		<br/>
+		<div class="row">
+			<div class="col-sm-4" ng-repeat="photo in photoArray" ng-if="photo.subType==='interior'">
+		   		<img class="slidePic" ng-src="{{ photo.imageSrc }}" alt="photo.captionTranscript" />
+		   		<br/>
+		   </div>
+	   	</div> 
 	</div>
-	
-	<h2>Interior Pictures</h2>
-	<hr>
-	<br/>
-	<div class="row">
-		<div class="col-sm-4" ng-repeat="photo in photoArray" ng-if="photo.subType==='interior'">
-	   		<img class="slidePic" ng-src="{{ photo.imageSrc }}" alt="photo.captionTranscript" />
-	   		<br/>
-	   </div>
-   	</div> 
-
 	<h2>Car Reviews</h2>
 	<hr>
 	<br/>
 	<!-- Reviews Section -->
 	<div class="row" id="reviews-container"></div>
+
+	<div class="row" ng-hide="hideArea">
+		<div class="col-sm-12">
+			<h3> There are no reviews yet. Would you like to write the first one? </h3>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-sm-12">

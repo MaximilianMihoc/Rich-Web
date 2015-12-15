@@ -2,6 +2,42 @@ body{
     padding-bottom: 100px;
 }
 
+/* the next 4 sections are stype properties for the Navigation bar. */
+.nav > li > a {
+    font-size: 20px;
+}
+
+#nav { 
+  /* width 100% is ver here as it requires the nav bar 
+      be take the screen weigth. */
+  width: 100%;
+  background-color: #277455;
+  /* Using a list in the nav bar, this will make sure that no bulet points or some other 
+      list styles are used. */
+    list-style: none;  
+}
+
+.fixed {
+    position: fixed; 
+    top: 0; 
+    height: 70px; 
+    z-index: 1;
+}
+
+#nav li a {
+    display: block; 
+    padding: 8px 55.65px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    color: #fff; 
+    border-right: 1px solid #ccc; 
+    border-left: 1px solid #ccc; 
+}
+/* Change shype on mouse over list element from nav bar */
+#nav li a:hover { 
+  background-color: #000; 
+}
+
 .form-signin
 {
     max-width: 330px;
@@ -65,10 +101,7 @@ body{
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-.need-help
-{
-    margin-top: 10px;
-}
+
 .new-account
 {
     display: block;
@@ -85,6 +118,7 @@ body{
     font-style: normal;
     font-variant: normal;
 }
+
 .jumbotron{
   background-color: #277455;
     padding: 5px;
@@ -116,7 +150,16 @@ input.ng-valid.ng-touched {
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    border-radius: 50%; 
+    border-radius: 50%;
+    margin: auto; 
+}
+
+.userArea {
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.25);
+    border-radius: 0px 0px 20px 20px;
+
 }
 
 .slidePic{
@@ -179,6 +222,7 @@ hr{
     border: 1px solid #d0d0d0;
     padding-left: 20px;
 }
+
 .optionsImage {
     display: block;
     margin: auto;
@@ -186,6 +230,10 @@ hr{
 
 .userReviewPic {
     width: 100px;
+}
+.reviewTime {
+    position: relative;
+    float: right;
 }
 
 .equipment-style {
@@ -205,3 +253,24 @@ hr{
     margin: 10px;
     background:rgba(0,0,0,0.25);
 }
+
+.favCTitle {
+    text-align: center;
+}
+
+.favCarDivOff {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 0px 10px 10px 10px;
+    margin: 10px;
+    background: rgba(0,0,0,0.25);
+}
+
+.favCarDivOn {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 0px 10px 10px 10px;
+    margin: 10px;
+    background: rgba(0,255,0,0.25);
+}
+    

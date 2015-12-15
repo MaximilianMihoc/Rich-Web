@@ -6,6 +6,7 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
   	var year = $routeParams.year;
   	var userUid = $routeParams.uid;
   	var styleId;
+  	
 
 	var responsePromise = $http.get("https://api.edmunds.com/api/vehicle/v2/"+make+"/"+model+"/"+year+"/styles?fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
 	
@@ -13,7 +14,6 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 			$scope.styles = data.styles;
 
 			var routeStyleid = $routeParams.styleid;
-			console.log(routeStyleid);
 
 			if(typeof routeStyleid === 'undefined')
 				$scope.selectedStyle = data.styles[0];
@@ -24,13 +24,13 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 					if(routeStyleid == data.styles[i].id) $scope.selectedStyle = data.styles[i];
 				}
 			}
-				
 
 			$scope.showSummaryRatings();
 			$scope.getEquipment();
 			$scope.showDetails();
 			$scope.showPictures();
 			$scope.showReviews();
+			$scope.hideArea = false;
 
 	});
 	responsePromise.error(function(data, status, headers, config) {
@@ -39,6 +39,7 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 
 	
 	$scope.showDetails = function() {
+		$scope.hideArea = false;
 		styleId = $scope.selectedStyle.id;
 		var fullDetailsByStyleID = $http.get("https://api.edmunds.com/api/vehicle/v2/styles/"+styleId+"?view=full&fmt=json&api_key=ab98zx7k6u2byxyt77rsunu6");
 	
@@ -132,6 +133,9 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 
 		var fireBaseReviews = new Firebase(FIREBASE_URL + "carReviews/" + styleId);
 	    fireBaseReviews.on('child_added', function(snapshot) {
+
+	    	$scope.hideArea = true;
+
 	        var uniqName = snapshot.key();
 	        var reviewComm = snapshot.val().comment;
 	        var reviewsContainer = $('#reviews-container');
@@ -142,7 +146,7 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 
 	        // get user profilepic and username
 	        var regRef = new Firebase(FIREBASE_URL + "users/" + reviewUser);
-	        console.log(FIREBASE_URL + "users/" + reviewUser);
+	        //console.log(FIREBASE_URL + "users/" + reviewUser);
 	        var reviewUserName;
 	        var reviewUserProfileImg;
 	        
@@ -152,7 +156,7 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 			  	reviewUserProfileImg = snapshot.val().profilePictureURL;
 
 			  	$('<div/>', {class: 'col-sm-12'})
-	            	.html('<div class="row review"><div class="col-sm-1"><img class="userReviewPic" src=" ' + reviewUserProfileImg + '"/><br/></div><div class="col-sm-11 reviewText"><br/><b>' + reviewUserName + '</b><br/>' + reviewComm + '<br/>' + dateStr + '</div></div>').appendTo(reviewsContainer);
+	            	.html('<div class="row review"><div class="col-sm-1"><img class="userReviewPic" src=" ' + reviewUserProfileImg + '"/><br/></div><div class="col-sm-11 reviewText"><br/><b>' + reviewUserName + '</b><br/>' + reviewComm + '<br/><span class="reviewTime">' + dateStr + '</span></div></div>').appendTo(reviewsContainer);
 
 	        	reviewsContainer.scrollTop(reviewsContainer.prop('scrollHeight'));
 			}, function (errorObject) {
@@ -173,16 +177,20 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	            model: model,
 	            year: year
 	        });
+
+	    notifyMe("This car was successfully added to your Favorite Cars List");
+
 	} //end Add Car To Favorites
 
 	$("#submit-btn").bind("click", function(e) {
 		styleId = $scope.selectedStyle.id;
         var comment = $("#comments");
         var commentValue = $.trim(comment.val());
-
+        
         if (commentValue.length === 0) {
             alert('Comments are required to continue!');
         } else {
+        	$scope.hideArea = true;
             var fireBaseRef = new Firebase(FIREBASE_URL + "carReviews")
 	        .child(styleId).push({
 	            date: Firebase.ServerValue.TIMESTAMP,
@@ -190,7 +198,6 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 	            comment: commentValue
 
 	        });
-
             comment.val("");
         }
 

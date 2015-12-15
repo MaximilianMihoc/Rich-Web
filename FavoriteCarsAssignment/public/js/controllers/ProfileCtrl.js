@@ -1,17 +1,15 @@
-mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', '$routeParams', 'FIREBASE_URL',
-  function($scope, Authentication, $routeParams, FIREBASE_URL) {
+mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', '$routeParams', '$location', 'FIREBASE_URL',
+  function($scope, Authentication, $routeParams, $location, FIREBASE_URL) {
 	
   	var uid = $routeParams.uid;
   	$scope.uid = uid;
+  	//$scope.hideNavBar = true;
 	
-	//console.log(uid);
-	//console.log(uid.regUser);
-	console.log(FIREBASE_URL + "favoriteCars/" + uid);
+	//console.log(FIREBASE_URL + "favoriteCars/" + uid);
   	var regRef = new Firebase(FIREBASE_URL + "favoriteCars/" + uid);
 
     regRef.on("value", function(snapshot) {
 	  	var favCars = snapshot.val();
-	  	console.log(favCars);
 	  	$scope.favCars = favCars;
 	  	$scope.$apply();
 

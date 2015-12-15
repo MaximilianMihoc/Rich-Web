@@ -69,6 +69,11 @@ mainManager.run([ '$rootScope', '$location',
       }); //event info
 }]); //run 
 
+function refreshPage()
+{
+  location.reload();
+}
+
 // Get user Gravatar valculating their hash
 // Reference: http://www.deluxeblogtips.com/2010/04/get-gravatar-using-only-javascript.html
 function get_gravatar(email, size) {
@@ -82,3 +87,44 @@ function get_gravatar(email, size) {
     return 'https://www.gravatar.com/avatar/' + MD5(email) + '.jpg?s=' + size;
 }
 // end of reference
+
+//Notification
+/* Reference: http://stackoverflow.com/questions/2271156/chrome-desktop-notification-example
+  Small Modification Made in the code
+*/
+document.addEventListener('DOMContentLoaded', function () {
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+});
+
+function notifyMe(notificationText) {
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.'); 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var notification = new Notification('Car Successfully Added', {
+      icon: 'images/Crystal_Project_success.png',
+      body: notificationText,
+    });
+
+  }
+}
+/* End Of Reference */
+
+// Reference: http://stanhub.com/scroll-to-top-then-fixed-navigation-effect-with-jquery-and-css-free-download/
+$(document).ready(function(){
+     $(window).bind('scroll', function() {
+     var navHeight = $( window ).height();
+       if ($(window).scrollTop() > navHeight) {
+         $('#navbar').addClass('fixed');
+       }
+       else {
+         $('#navbar').removeClass('fixed');
+       }
+    });
+  });
+/* End Of Reference */

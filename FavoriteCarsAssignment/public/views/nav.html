@@ -9,9 +9,14 @@
 				<img class="navImg" src="images/logo2.png">
 			</div>
 		</div>
+		<div id="navbar" class="row" ng-controller="RegistrationController" ng-show="currentPath !== '/login'">
+			<div class="col-sm-12">
+				<ul id="nav" class="nav navbar-nav navbar-right" >
+		        	<li class="active"><a ng-href="#/profile/{{currentUser.regUser}}">My Profile</a></li>
+		        	<li><a ng-href="#/search/{{currentUser.regUser}}">Search Car</a></li>
+		        	<li><a ng-href="#/login" ng-click="logout()">Log Out</a></li>
+		      	</ul>
+		    </div>
+		</div>
 	</div>
-
-	
-	<!--<a ng-href="#/login" ng-show="isLoggedIn">Log Out</a>-->
-
 </div>

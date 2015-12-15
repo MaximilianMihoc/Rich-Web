@@ -27,10 +27,11 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 	      }).then(function(authData) {
 	          console.log("Authenticated successfully with payload:", authData);
 	          $location.path('/profile/' + authData.uid );
+	          $rootScope.currentPath = $location.path();
+	          location.reload();
 	      }).catch(function(error){
 	          console.log("Login Failed!", error);
 	          $rootScope.message = 'The specified credentials does not exist. Please Register or try again.';
-	          $location.path('/login');
 	      });
 	    }, // end login
 	    register: function(user) {
@@ -61,7 +62,8 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 
 	        self.login(loginUser);
 	        $location.path('/profile/' + userData.uid );
-
+	        $rootScope.currentPath = $location.path();
+	        location.reload();
 	      }).catch(function(error){
 	          console.log("Error creating user:", error);
 	      });
@@ -90,7 +92,7 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 		          }); //set
 
 		          $location.path('/profile/' + authData.uid );
-
+		          $rootScope.currentPath = $location.path();
 	          }
 	        }, 
 	        {
@@ -114,9 +116,8 @@ function($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
 		            profilePictureURL: authData.google.profileImageURL
 
 		          }); //set
-
 		          $location.path('/profile/' + authData.uid);
-
+		          $rootScope.currentPath = $location.path();
 	          }
 	        }, 
 	        {

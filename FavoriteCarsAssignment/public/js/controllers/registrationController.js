@@ -1,5 +1,7 @@
-mainManager.controller('RegistrationController', [ '$scope', 'Authentication', 
-  function($scope, Authentication) {
+mainManager.controller('RegistrationController', [ '$scope', 'Authentication', '$location', 
+  function($scope, Authentication, $location) {
+
+    $scope.currentPath = $location.path();
 
   	$scope.login = function(){
   		Authentication.login($scope.user);
