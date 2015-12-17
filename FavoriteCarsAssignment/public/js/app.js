@@ -38,6 +38,7 @@ mainManager.config(['$routeProvider',
         } //current Auth
       } //resolve
     })
+    /* 2 routes are provided for details view with different parameters. */
     .when('/details/:make/:model/:year/:uid', {
       templateUrl: 'views/carDetails.html',
       controller: 'CarDetailCtrl',
@@ -47,6 +48,8 @@ mainManager.config(['$routeProvider',
         } //current Auth
       } //resolve
     })
+    /* one extra route for details with one extra parameter used in the user profile page 
+    when the user has to be redirected to details of a specific care make, model year and style. */
     .when('/details/:make/:model/:year/:styleid/:uid', {
       templateUrl: 'views/carDetails.html',
       controller: 'CarDetailCtrl',

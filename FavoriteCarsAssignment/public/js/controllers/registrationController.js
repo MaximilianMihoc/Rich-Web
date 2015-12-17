@@ -1,3 +1,5 @@
+/* Registration controller. Used for login and register. this controller passes the data from
+the view to the Authentication servise and user gets authenticated. */
 mainManager.controller('RegistrationController', [ '$scope', 'Authentication', '$location', 
   function($scope, Authentication, $location) {
 
