@@ -2,19 +2,14 @@ body{
     padding-bottom: 100px;
 }
 
-/* the next 4 sections are stype properties for the Navigation bar. */
 .nav > li > a {
     font-size: 20px;
 }
 
 #nav { 
-  /* width 100% is ver here as it requires the nav bar 
-      be take the screen weigth. */
   width: 100%;
   background-color: #277455;
-  /* Using a list in the nav bar, this will make sure that no bulet points or some other 
-      list styles are used. */
-    list-style: none;  
+  list-style: none;  
 }
 
 .fixed {
@@ -33,7 +28,7 @@ body{
     border-right: 1px solid #ccc; 
     border-left: 1px solid #ccc; 
 }
-/* Change shype on mouse over list element from nav bar */
+
 #nav li a:hover { 
   background-color: #000; 
 }
@@ -44,14 +39,11 @@ body{
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
+.form-signin .form-signin-heading
 {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
-{
-    font-weight: normal;
-}
+
 .form-signin .form-control
 {
     position: relative;
@@ -91,6 +83,7 @@ body{
     font-weight: 400;
     display: block;
 }
+
 .profile-img
 {
     width: 96px;

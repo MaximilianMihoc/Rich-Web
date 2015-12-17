@@ -1,31 +1,37 @@
+<!-- 
+Search Car view. After user logs in, he/she will be able to go to the search car view. A list of cars are displayed to the user. Each car has different models and each model has it's onw years. All the car information was retrieved from Edmunds API (a link to the API is included in the footer of the application). 
 
-	
+A search box is available on the screen so that the user can search the favorite car by typing the car make or model
 
-<div ng-controller="SearchCtrl">
+ -->
 	<div class="col-sm-12">
 		<div class="" ><h3>Search Cars: <input ng-model="searchText" placeholder="Search"></h3>
 		</div>
 	</div>
+	<!-- The filter is used to filter the list items based on text entered in the search box -->
     <div class="row searchItem" ng-repeat="make in cars.makes | filter:searchText">
+    	<!-- car make name is displayed for all cars in the list -->
 		<div class="col-sm-3">
 	      	<h2 class="carName">{{ make.name }}</h2>
 	    </div>
+	    <!-- Every car has a list of models. The first select box is populated with the models of each car. -->
 	    <div class="col-sm-3">
 	    	<br/>
 	      	<select name="selectedModel" class="select-style" ng-options="model.name for model in make.models" ng-model="selectedModel" ng-change="selectedYear = selectedModel.years">
-		      <option value="" >-- Pleae select a model --</option>
+		      <option value="" >Please select a model</option>
 		   	</select>
 		</div>
+		<!-- After the user selects the model, the options in the second list are automatically populated. Each model has different years.-->
 	    <div class="col-sm-3">
 	    	<br/>
 		   	<select name="selectedYear" class="select-style" ng-options="year.year for year in selectedModel.years" ng-model="selectedYear">
-		   		<option value="" >-- Pleae select a year --</option>
+		   		<option value="" >Please select a year</option>
 		   	</select>
 		</div>
+		<!-- When the model AND year have been selected for a car make, the "View Details" button is enabled and the user is able to see more details about that specific car. -->
 	    <div class="col-sm-3">
 	    	<p ng-model="uid" ng-hide></p>
 		   	<a class="btn btn-lg btn-primary btn-block" ng-disabled="!selectedModel || selectedYear.id==null" href="#/details/{{make.name}}/{{selectedModel.name}}/{{selectedYear.year}}/{{uid}}">View Details</a>
 		</div> 
 		
 	</div>
-</div>

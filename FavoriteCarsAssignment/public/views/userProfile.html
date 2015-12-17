@@ -1,6 +1,4 @@
-
-
-
+<!-- User profile view. User informations are gathered from the Registration controller (Authentication service), and favorite car informations are retrieved from Profile Controller. -->
 <div class="row">
     <div class="col-sm-5 userArea" ng-controller="RegistrationController" ng-show="currentUser">
 		<img id="profilePic" src="{{ currentUser.profilePictureURL }}">
@@ -8,9 +6,11 @@
 		<!--<a ng-href="#/search/{{currentUser.regUser}}">Search Cars</a><br/>
 		<a ng-href="#/login" ng-click="logout()">Log Out</a> -->
 	</div>
+	<!-- If the authenticated user has any favorite cars, their reference will be saved on user profile so they can access them easier. -->
 	<div class="col-sm-7 favoriteCarsContainer">
 		<div ng-if="favCars != null">
 			<h2 class="favCTitle"> Favorite Cars </h2>
+			<!-- some css evects have been added to the following divs in order to look like buttons. When a div is clicked, the user is redirected to another page to see more information about the favorite car -->
 			<div class="favCarDivOff" onmouseover="this.className='favCarDivOn'" onmouseout="this.className='favCarDivOff'" ng-repeat="favcar in favCars">
 				<a href="#/details/{{favcar.make}}/{{favcar.model}}/{{favcar.year}}/{{favcar.styleId}}/{{uid}}">
 					<div class="row">
@@ -22,6 +22,7 @@
 				</a>
 			</div>
 		</div>
+		<!-- If the user does not have any favorite car, this div is displayed --> 
 		<div ng-if="favCars === null">
 			<h2 class="favCTitle"> You do not have any Favorite Cars</h2>
 			<img class="optionsImage" src="images/img.png">

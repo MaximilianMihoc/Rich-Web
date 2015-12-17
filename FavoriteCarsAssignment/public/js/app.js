@@ -1,5 +1,9 @@
 
-
+/*The main manager is created here.
+  The routeProvider is used to redirect the user to different views when certain events happens.
+  Authentication is required for certain views. if the user is not authenticated, 
+    it will be redirected to the login page and a message will be displayed.
+*/ 
 var mainManager = angular.module('mainManager', ['ngRoute','firebase','validation.match'])
 .constant('FIREBASE_URL', 'https://favoritecars.firebaseio.com/');
 
@@ -58,6 +62,8 @@ mainManager.config(['$routeProvider',
 
 }]);
 
+/* Check if error contains the message 'AUTH _REQUIRED' and in that case, redirect user to login 
+page and send the message to the login view through the root scope. */
 mainManager.run([ '$rootScope', '$location', 
   function($rootScope, $location) {
     $rootScope.$on('$routeChangeError', 
@@ -69,12 +75,7 @@ mainManager.run([ '$rootScope', '$location',
       }); //event info
 }]); //run 
 
-function refreshPage()
-{
-  location.reload();
-}
-
-// Get user Gravatar valculating their hash
+// Get user Gravatar calculating their hash. The hash is calculated using the user email.
 // Reference: http://www.deluxeblogtips.com/2010/04/get-gravatar-using-only-javascript.html
 function get_gravatar(email, size) {
 
@@ -118,7 +119,7 @@ function notifyMe(notificationText) {
 // Reference: http://stanhub.com/scroll-to-top-then-fixed-navigation-effect-with-jquery-and-css-free-download/
 $(document).ready(function(){
      $(window).bind('scroll', function() {
-     var navHeight = $( window ).height();
+     var navHeight = $( '#top' ).height();
        if ($(window).scrollTop() > navHeight) {
          $('#navbar').addClass('fixed');
        }

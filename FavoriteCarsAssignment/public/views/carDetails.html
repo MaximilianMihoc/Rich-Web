@@ -1,11 +1,16 @@
-
+<!-- Car Details view. 
+	In order to get information for this page, more http requests have been made in the controller.
+-->
 <div class="row" ng-show="vehicle">
+	<!-- In the first place, the car can have different styles, for the same make, model or year, a select box is displayed to the user. In the select box the user can choose a desired style. By default, the fisrt style is selected.  -->
 	<div class="row">
 		<div class="col-sm-9">
 			<h2 id="titleCarDetPage">{{vehicle.make.name}} {{vehicle.model.name}} {{vehicle.numOfDoors}} doors - {{vehicle.year.year}}</h2>
+			<!-- at every change of the style, a set of methods are called so that all the information in the page gets changed. -->
 			<b class="text">Style</b> <select name="selStyle" class="select-style" ng-options="style.name for style in styles" ng-model="selectedStyle" ng-change="showSummaryRatings(); getEquipment(); showDetails(); showPictures(); showReviews()">
 		   </select>
 	   	</div>
+	   	<!-- In this section, the user can see more detils regarding the equipment of the car in a modal window. The second button will add the selected car into the user favorite cars list.  -->
 	   	<div class="col-sm-3">
 	   		<button type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal">See Car Equipment</button>
 	   		<button class="btn btn-lg btn-primary btn-block" ng-click="addCarToFavorites()">Add Car to Favorites</button>
@@ -14,8 +19,7 @@
    	</div>
 
    	<!-- More Car Details -->
-	<!-- Used to see ratings. Cars from my app do not have them
-		This will be never displayed.-->
+	<!-- Used to see car summary grade and date. Only few cars have this information and it will not be displayed for the rest of the cars. -->
 	<div class="row" ng-show="carRating" ng-if="carRating.status!='NOT_FOUND'">
    		<div class="col-sm-12">
    			<h3>Summary</h3>
@@ -25,7 +29,9 @@
    		</div>
    	</div>
 
-	<!-- Equipment Modal -->
+	<!-- Equipment Modal. Used to show equipment details to the user when the button "See Car Equipment" is clicked.  
+	Reference for design: http://www.w3schools.com/bootstrap/bootstrap_modal.asp. 
+	-->
   	<div class="modal fade" id="myModal" role="dialog">
 	    <div class="modal-dialog">
 			<!-- Modal content-->
@@ -50,46 +56,50 @@
 			</div>
 	   	</div>
 	</div>
+	<!-- End of reference -->
 
+	<!-- More details of the car including engine, transmission, categories, price, options included in the model.  -->
    	<h2>Car Details</h2>
 	<hr>
    	<div class="row" >
+   		<!-- This area contains engine information for the selected car. the ng-if directive is used to display certain field only f it exists. -->
    		<div class="col-sm-4">
    			<h4>Engine: {{vehicle.engine.name}}</h4>
-   			Compression Ratio: {{vehicle.engine.compressionRatio}} <br/>
-   			Cylinger: {{vehicle.engine.cylinder}} <br/>
-   			Size: {{vehicle.engine.size}} <br/>
-   			Displacement: {{vehicle.engine.displacement}} <br/>
-   			Configuration: {{vehicle.engine.configuration}} <br/>
-   			Fuel Type: {{vehicle.engine.fuelType}} <br/>
-   			Horse Power: {{vehicle.engine.horsepower}}<br/>
-   			Torque: {{vehicle.engine.torque}}<br/>
-   			Total Valves: {{vehicle.engine.totalValves}}<br/>
-   			Manufacturer Engine Code: {{vehicle.engine.manufacturerEngineCode}}<br/>
-   			Type: {{vehicle.engine.type}}<br/>
-   			Code: {{vehicle.engine.code}}<br/>
-   			Compressor Type: {{vehicle.engine.compressorType}}<br/>
+   			<span ng-if='vehicle.engine.compressionRatio'>Compression Ratio: {{vehicle.engine.compressionRatio}} <br/></span>
+   			<span ng-if='vehicle.engine.cylinder'>Cylinger: {{vehicle.engine.cylinder}} <br/></span>
+   			<span ng-if='vehicle.engine.size'>Size: {{vehicle.engine.size}} <br/></span>
+   			<span ng-if='vehicle.engine.displacement'>Displacement: {{vehicle.engine.displacement}} <br/></span>
+   			<span ng-if='vehicle.engine.configuration'>Configuration: {{vehicle.engine.configuration}} <br/></span>
+   			<span ng-if='vehicle.engine.fuelType'>Fuel Type: {{vehicle.engine.fuelType}} <br/></span>
+   			<span ng-if='vehicle.engine.horsepower'>Horse Power: {{vehicle.engine.horsepower}}<br/></span>
+   			<span ng-if='vehicle.engine.torque'>Torque: {{vehicle.engine.torque}}<br/></span>
+   			<span ng-if='vehicle.engine.totalValves'>Total Valves: {{vehicle.engine.totalValves}}<br/></span>
+   			<span ng-if='vehicle.engine.manufacturerEngineCode'>Manufacturer Engine Code: {{vehicle.engine.manufacturerEngineCode}}<br/></span>
+   			<span ng-if='vehicle.engine.type'>Type: {{vehicle.engine.type}}<br/></span>
+   			<span ng-if='vehicle.engine.code'>Code: {{vehicle.engine.code}}<br/></span>
+   			<span ng-if='vehicle.engine.compressorType'>Compressor Type: {{vehicle.engine.compressorType}}<br/></span>
    		</div>
+   		<!-- Transmission, categories and price information displayed here. ng-if directed used for the same reason as the above one. -->
    		<div class="col-sm-3">
    			<h4>Transmission {{vehicle.transmission.name}}</h4>
-   			Transmission Type: {{vehicle.transmission.transmissionType}}<br/>
-   			Number Of Speeds: {{vehicle.transmission.numberOfSpeeds}}<br/>
-
+   			<span ng-if='vehicle.transmission.transmissionType'>Transmission Type: {{vehicle.transmission.transmissionType}}<br/></span>
+   			<span ng-if='vehicle.transmission.numberOfSpeeds'>Number Of Speeds: {{vehicle.transmission.numberOfSpeeds}}<br/></span>
    			<h4>Categories </h4>
-   			Market: {{vehicle.categories.market}}<br/>
-   			EPA Class: {{vehicle.categories.EPAClass}}<br/>
-   			Vehicle Size: {{vehicle.categories.vehicleSize}}<br/>
-   			Vehicle Stype: {{vehicle.categories.vehicleStyle}}<br/>
-
+   			<span ng-if='vehicle.categories.market'>Market: {{vehicle.categories.market}}<br/></span>
+   			<span ng-if='vehicle.categories.EPAClass'>EPA Class: {{vehicle.categories.EPAClass}}<br/></span>
+   			<span ng-if='vehicle.categories.vehicleSize'>Vehicle Size: {{vehicle.categories.vehicleSize}}<br/></span>
+   			<span ng-if='vehicle.categories.vehicleStyle'>Vehicle Stype: {{vehicle.categories.vehicleStyle}}<br/></span>
    			<h4>Prices</h4>
-   			Base MSRP: &euro; {{vehicle.price.baseMSRP}} <br/>
-   			Base Invoice: &euro; {{vehicle.price.baseInvoice}} <br/>
-   			Devivery Charges: &euro; {{vehicle.price.deliveryCharges}} <br/>
+   			<span ng-if='vehicle.price.baseMSRP'>Base MSRP: &euro; {{vehicle.price.baseMSRP}} <br/></span>
+   			<span ng-if='vehicle.price.baseInvoice'>Base Invoice: &euro; {{vehicle.price.baseInvoice}} <br/></span>
+   			<span ng-if='vehicle.price.deliveryCharges'>Devivery Charges: &euro; {{vehicle.price.deliveryCharges}} <br/></span>
    		</div>
 
+   		<!-- Option informations displayed in this div. -->
    		<div class="col-sm-5">
    			<h4>Options</h4>
    			<div class="optionsDiv">
+   				<!-- if the selected car does not have anything in the options list, an image is displayed in the div letting the user know there are not information available-->
 	   			<div ng-if="vehicle.options.length" ng-repeat="option in vehicle.options">
 	   				<h4>{{option.category}}</h4>
 	   				<div ng-repeat="op in option.options">
@@ -105,6 +115,7 @@
    		</div>
    	</div>
 
+   	<!-- Pictures displayed in the next section if there are any. More informations on how the pictures are displayed in the controller. -->
    	<div ng-if="photoArray.length">
 	   	<h2>Exterior Pictures</h2>
 		<hr>
@@ -125,18 +136,21 @@
 		   </div>
 	   	</div> 
 	</div>
+
+	<!-- This section is for the reviews. The reviews are specific for this application and they are stored in firebase. When a car has now reviews-->
 	<h2>Car Reviews</h2>
 	<hr>
 	<br/>
 	<!-- Reviews Section -->
 	<div class="row" id="reviews-container"></div>
-
+    <!-- When a car has now reviews, this div gets displayed. -->
 	<div class="row" ng-hide="hideArea">
 		<div class="col-sm-12">
 			<h3> There are no reviews yet. Would you like to write the first one? </h3>
 		</div>
 	</div>
 
+	<!-- The next div represents the area where the user can write reviews and post them. the code used here was inspired from the simple chat application we did in class. -->
 	<div class="row">
 		<div class="col-sm-12">
 			<form role="form">

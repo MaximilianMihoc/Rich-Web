@@ -1,3 +1,4 @@
+<!-- Log In view. Loaded in the application at start and every time when the url is not one specified in the route provider. User can login with github or google account but he can also choose to register with a new account. -->
 <div class="row">
     <div class="col-sm-6">
         <h1 class="text-center login-title">Log in to continue</h1>
@@ -17,28 +18,31 @@
         </div>
     </div>
     <div class="col-sm-6">
-        
+        <!-- Design inspired from http://bootsnipp.com/snippets/featured/google-style-login
+        A lot of changes were made to the code though. Only few things were kept.   -->
         <div class="account-wall">
+            <!-- Message to be displayed when something goes wrong. E.g. user tries to access a page without being authenticated or when the login credentials does not exist in the database. -->
             <p class="text-center" ng-show="message"> {{ message }} </p>
             <img class="profile-img" src="images/Exclamation_icon.png" alt="">
+            <!-- Login form. On submit, data is sent to Authentication service, through the Register controller, and user gets authenticated if credentials exists or gets a message in case the credentials does not exist. -->
             <form id="LogInForm" name="LogInForm" class="form-signin" ng-submit="login()" novalidate>
+                <!-- Angularjs is very helpful here with the validation. User only able to press the login button is a correct email address is entered and password field is not empty. -->
                 <fieldset>
                     <input type="email" name="email" id="InputEmailLogin" ng-model="user.inputEmail" class="form-control" placeholder="Email" ng-required="true" autofocus>
+                    <!-- message displayed in case of errors. E.g. email address not in the required format or email field is empty. -->
                     <p class="error validationerror" ng-show="LogInForm.email.$invalid && LogInForm.email.$touched">
                     Must be a valid email</p>
 
                     <input type="password" name="password" id="InputPasswordLogin" ng-model="user.inputPassword" class="form-control" placeholder="Password" ng-required="true">
+                    <!-- message displayed on errors -->
                     <p class="error validationerror" ng-show="LogInForm.password.$invalid && LogInForm.password.$touched">
                     Password is required</p>
                 </fieldset>
-
+                <!-- button to log in. only clickable when credentials are entered -->
                 <button id="LogInBtn" class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="LogInForm.$invalid">Log in</button>
             </form>
-
-            
-
-        
         </div>
+        <!-- user redirected to register page -->
         <a href="#/register" class="text-center new-account">Create an account </a>
     </div>
 </div>

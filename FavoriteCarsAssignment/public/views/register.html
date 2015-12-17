@@ -1,9 +1,13 @@
+<!-- Registration view. Few hints for design used from http://www.prepbootstrap.com/bootstrap-template/registration-form.
+Many changes made and all Angular js elements added by Max. -->
 <div class="row">
     <div class="col-sm-12">
+    	<!-- Registration form. On submit, data is passed to the authentication service, through the Registration controller, and an account gets created for the user. Angularjs used for form validation and submission. -->
+    	<!-- Each field in the form has it's own way of validation and messages are displayed every time when something goes wrong. -->
 	    <form role="form" name="registerForm" id="registerForm" ng-submit="register()"novalidate>
 	        <div class="col-lg-12">
-	            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-
+	            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span> Required Field</strong></div>
+	            
 				<div class="form-group">
 	                <label for="InputEmail">Enter Username</label>
 	                <div class="input-group">
@@ -11,7 +15,8 @@
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
-	            <p class="error validationerror" ng-show="registerForm.Inputusername.$invalid && registerForm.Inputusername.$touched">Must be a valid email</p>
+	            <!-- A message is displayed for the above field if is left empty. -->
+	            <p class="error validationerror" ng-show="registerForm.Inputusername.$invalid && registerForm.Inputusername.$touched">This field cannot be empty</p>
 
 	            <div class="form-group">
 	                <label for="InputEmail">Enter Email</label>
@@ -20,6 +25,7 @@
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
+	            <!-- A message is displayed for the email field if is left empty or the email is not in a valid format -->
 	            <p class="error validationerror" ng-show="registerForm.InputEmail.$invalid && registerForm.InputEmail.$touched">Must be a valid email</p>
 
 	            <div class="form-group">
@@ -29,6 +35,7 @@
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
+	            <!-- A message is displayed for the confirmation email field if is left empty, the email is not in a valid format or if the confirmation email does not match wirh the first email. Angular validation match library used for for the match function. -->
 	            <p class="error validationerror" ng-show="registerForm.InputConfirmEmail.$invalid && registerForm.InputConfirmEmail.$touched && registerForm.InputConfirmEmail.$error.match">Confirm Email is not valid or emails do not match</p>
 	            
 
@@ -39,6 +46,7 @@
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
+	            <!-- A message is displayed for the password field if is left empty or is invalid -->
 	            <p class="error validationerror" ng-show="registerForm.InputPassword.$invalid && registerForm.InputPassword.$touched">Password is required</p>
 
 	            <div class="form-group">
@@ -48,8 +56,10 @@
 	                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 	                </div>
 	            </div>
+	            <!-- A message is displayed for the confirmation password field if is left empty, is invalid or it does not match with the other password field -->
 				<p class="error validationerror" ng-show="registerForm.InputPasswordSecond.$invalid && registerForm.InputPasswordSecond.$touched && registerForm.InputPasswordSecond.$error.match">Confirm Password is required</p>
 
+				<!-- Submit button, only enabled after all fields were successfully validated -->
 	            <button type="submit" name="submit" id="submit" class="btn btn-info pull-right" ng-disabled="registerForm.$invalid">Submit</button>
 
 	        </div>

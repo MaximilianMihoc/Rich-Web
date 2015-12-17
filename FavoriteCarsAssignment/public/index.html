@@ -1,4 +1,7 @@
 <!doctype html>
+<!-- This is the main page of the application. The content of this page will change depending on what the user is doing. 
+    All the libraries and external files and libraries used in the application are imported here.
+-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -8,17 +11,19 @@
   
 </head>
 <body ng-app="mainManager">
-
+  <!-- Include the header and navigation bar in all pages using Angularjs directive ng-include -->
   <header>
     <nav ng-include="'views/nav.html'"></nav>
   </header>
-
+  
+  <!-- This is the main section of the page that is changed in the application by the Angularjs route provider. When some events happens in the application this is the area that will be changed. Angularjs uses the ng-view directive to know what area to be by the route provider. -->
   <main>
     <div class="container">
       <div ng-view></div>
     </div>
   </main>
-
+  
+  <!-- Include the footer in all pages using Angularjs directive ng-include --> 
   <footer>
     <nav ng-include="'views/footer.html'"></nav>
   </footer>

@@ -3,7 +3,6 @@ mainManager.controller('ProfileCtrl', [ '$scope', 'Authentication', '$routeParam
 	
   	var uid = $routeParams.uid;
   	$scope.uid = uid;
-  	//$scope.hideNavBar = true;
 	
 	//console.log(FIREBASE_URL + "favoriteCars/" + uid);
   	var regRef = new Firebase(FIREBASE_URL + "favoriteCars/" + uid);

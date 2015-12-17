@@ -103,14 +103,22 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 				}
 
 				var imageSrc = "https://media.ed.edmunds-media.com";
+				//console.log(photoObject);
+				var maxSize = 0;
+				var srcEnd = "";
 				for(j = 0; j < photoObject.photoSrcs.length; j++)
 				{
-					if( photoObject.photoSrcs[j].indexOf("_1600.jpg") > -1)
+					var st = photoObject.photoSrcs[j].lastIndexOf("_");
+					var end = photoObject.photoSrcs[j].lastIndexOf(".jpg");
+					var currSize = parseInt(photoObject.photoSrcs[j].substring(st+1, end));
+					if( currSize > maxSize && currSize <= 1600)
 					{
-						imageSrc += photoObject.photoSrcs[j];
+						maxSize = currSize;
+						srcEnd = photoObject.photoSrcs[j];
 					}
-
 				}
+				imageSrc += srcEnd;
+				//console.log(maxSize + " - > " + imageSrc);
 
 			    photoArray.photoData.push({
 			    	"subType" : photoObject.subType,
@@ -118,9 +126,11 @@ mainManager.controller('CarDetailCtrl', [ '$scope', 'Authentication', '$http', '
 			    	"authors": authors,
 			    	"imageSrc": imageSrc
 			    });
-
-			    $scope.photoArray = photoArray.photoData;
 			}
+
+			$scope.photoArray = photoArray.photoData;
+			console.log(photoArray);
+			
 		});
 		photoByStyleID.error(function(data, status, headers, config) {
 			alert("AJAX failed! - showPictures function. Data: " + data);
